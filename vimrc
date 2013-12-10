@@ -10,7 +10,7 @@
 " see, I told you..  
 set nocompatible
 
-" Set up the mapleader hear in case I want it below
+" Set up the mapleader here in case I want it below
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -38,7 +38,7 @@ if has('gui_running')
 		set guifont=peep:h11,Consolas:h11
 	endif
 	if has('gui_macvim')
-        echo "looks like we're on a mac"
+        echo "looks like we're using macvim"
 		" Monaco 10 pt looks good, 
 		set guifont=Monaco:h10
 	endif

@@ -43,6 +43,8 @@ if has('gui_running')
 		set guifont=Monaco:h10
 	endif
 
+endif
+
 " set fast terms and mouse modes for local terms
 "if &term =~ 'linux'|'xterm'|'rvxt'
 "	set ttyfast

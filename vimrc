@@ -42,7 +42,6 @@ if has('gui_running')
 		" Monaco 10 pt looks good, 
 		set guifont=Monaco:h10
 	endif
-endif
 
 " set fast terms and mouse modes for local terms
 "if &term =~ 'linux'|'xterm'|'rvxt'

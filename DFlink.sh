@@ -3,7 +3,6 @@
 # DFlink.sh 
 # This script creates symlinks from the home directory 
 # to any desired dotfiles in ~/dotfiles
-############################
 #  
 #  
 ########## Variables
@@ -15,7 +14,7 @@ files="bashrc vimrc gitrc"    # list of files/folders to symlink in homedir
 # do all the work from the dotfiles dir
 cd $dfdir
 
-# move any existing dotfiles in homedir to backup dir, then create symlinks 
+# move any existing dotfiles in homedir to backup dir, then create symlinks
 for file in $files; do
     if [ -e $dfdir/$file] # make sure source file exists
     then
@@ -25,8 +24,16 @@ for file in $files; do
             echo "Move ~/.$file to $olddir"
             mv ~/.$file ~/$olddir
         fi
-        echo "Creating symlink to ~/.$file"
-        ln -s $dfdir/$file ~/.$file
+        # Link back to the dotfile
+        if [ -L ~/.$file ] #check for existing symlink
+        then
+            echo "Link exists for ~./$file"
+        else
+            echo "Creating symlink to ~/.$file"
+            ln -s $dfdir/$file ~/.$file
+        fi
+    else
+        echo "File $file is missing from $dfdir"  
     fi
 done
 

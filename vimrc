@@ -1,4 +1,3 @@
-
 " vimrc for most things
 " mostly targets 7.0 or later and is not vi compatable
 " This may not work for you. I like weird fonts
@@ -131,19 +130,11 @@ set history=700
 set mouse=a
 " this is a fast terminal
 set ttyfast
-
-
-" Status line ++++++++++++++++++++++++++++
-" Always show the status line
-set laststatus=2
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
-endfunction
-
-
+"
+" Run pathogen if it exists in the correct place.
+if filereadable(expand("~/.vim/autoload/pathogen.vim"))
+    execute pathogen#infect()
+    echo "Pathogen enabled"
+else
+    echo "Pathogen not found"
+endif

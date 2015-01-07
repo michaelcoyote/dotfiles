@@ -81,6 +81,9 @@ syntax enable
 filetype on
 filetype plugin on
 filetype indent on
+" Make sure context highlighting works for *.md markdown files
+"  this overrides the typical behavior of highlighting Modula-2
+au BufRead,BufNewFile *.md set filetype=markdown
 
 " Vim Spellchecker +++++++++++++++++++++++++++++++++++++++++++
 " turn on spellcheck if version 7 or above

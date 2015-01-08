@@ -1,0 +1,59 @@
+# A simple and functional screenrc
+#
+
+## vbell kinda sucks but I'm used to it by now.
+vbell on
+vbell_msg 'wtf?'
+# detatch session on SIGHUP
+autodetach on
+# message customization
+startup_message off
+pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
+# remove flow control since I'm not using a serial line
+defflow off
+# ignore case in searches
+ignorecase on
+# set the number of scrollback lines
+defscrollback 5000
+
+# Pretty status bar at the bottom.
+hardstatus alwayslastline
+# Format a status line color formatting is "%{gk}" for example
+# basic format is like this:
+# [Hostname][ 0-@ active-win 1 bg-win (3* curr-win) ][mm/dd HH:mm]
+hardstatus string "%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m/%d %{W}%c %{g}]"
+
+## XTERM TWEAKS ##
+### termcap for screen (Japanese support)
+#termcap * 'G1:S0=\E(%.:E0=\E(B:TY=iso2022'
+#termcap *  'G0:S0=\E(%.:E0=\E(B:TY=iso2022'
+### Kanji code
+#kanji euc euc
+#defkanji euc
+
+#termcapinfo xterm ti@:te@
+#
+# change the escape key from a to o
+escape ^Oo
+#
+# remove dangerous and bad bidings
+bind k    # kill
+bind ^k   # kill
+bind ^a	  # remap control char
+bind ^Q   # x-on
+bind ^f   # flow control
+bind ^r   # word wrap
+bind  q   # send ctl-q ?
+bind ^S   # x-off
+bind  s   # split
+bind "\\" # quit all windows!
+# add some better/more useful bindings
+bind 'K' kill
+bind 'I' login on
+bind 'O' login off
+bind '}' history
+bind R screen -t root su -
+
+# Bind F11 and F12 (NOT F1 and F2) to previous and next screen window
+bindkey -k F1 prev
+bindkey -k F2 next

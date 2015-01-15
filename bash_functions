@@ -1,7 +1,10 @@
 #
 # Handy place to store all my bash functions
+# some of these are stolen from elsewhere some I've written myself.
 #
 
+#------------------------------------------------------
+# File manipulation and managment functions.
 #
 # Find a file with a pattern in name:
 function ff() { find . -type f -iname '*'"$*"'*' -ls ; }
@@ -107,8 +110,12 @@ function mydf()         # Pretty-print of 'df' output.
     done
 }
 
+# TODO munge the ip and myip function together & list IPs by iface.
+function ip() {
+ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{ print $2 }'
+} 
 
-function my_ip() # Get IP adress on ethernet.
+function myip() # Get IP adress on ethernet.
 {
     MY_IP=$(/sbin/ifconfig eth0 | awk '/inet/ { print $2 } ' |
       sed -e s/addr://)
@@ -125,7 +132,7 @@ function hii()   # Get current host related info.
     echo -e "\nMachine stats :$NC " ; uptime
     echo -e "\nMemory stats :$NC " ; free
     echo -e "\nDiskspace :$NC " ; mydf / $HOME
-    echo -e "\nLocal IP Address :$NC" ; my_ip
+    echo -e "\nLocal IP Address :$NC" ; myip
     echo -e "\nOpen connections :$NC "; netstat -pan --inet;
     echo
 }
@@ -158,7 +165,7 @@ function corename()   # Get name of app that created a corefile.
     done
 }
 
-# Adds some text in the terminal frame (if applicable).
+# change xterm frame title 
 function xtitle()
 {
     case "$TERM" in
@@ -170,7 +177,7 @@ function xtitle()
 
 
 # Aliases that use xtitle
-alias xhtop='xtitle Processes on `hostname` && htop'
+alias xhtop='xtitle htop on `hostname` && htop'
 
 # .. and functions
 function xman()
@@ -181,4 +188,12 @@ function xman()
     done
 }
 
+
+# really basic grep function to find IP/netmask octets.
+function ipgrep()
+{
+# find any pattern from "0.0.0.0" to "259.259.259.259"
+# TODO fix this so it checks for legal octets (255.255.255.255) (Note: may be some time)
+grep -o -E '/b(((2[0-5]|1[0-9])|[0-9])?([0-9]){1,2}\.){3}((2[0-5]|1[0-9])|[0-9])?([0-9])/b'
+} 
 

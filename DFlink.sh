@@ -16,7 +16,7 @@ cd $dfdir
 
 # move any existing dotfiles in homedir to backup dir, then create symlinks
 for file in $files; do
-    if [ -e $dfdir/$file] # make sure source file exists
+    if [ -e $dfdir/$file ] # make sure source file exists
     then
         if [ -e ~/.$file ] # if .file exists, back up
         then    

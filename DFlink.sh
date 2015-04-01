@@ -23,12 +23,15 @@ for file in $files; do
         if [ -L ~/.$file ] #check for existing symlink
         then
             echo "Link exists for ~./$file"
+        elif [ "$(stat -c %h -- "$file")" -gt 1 ]
+        then
+            echo "~/.$file has more than one name, check for hard links."
         else
             if [ -e ~/.$file ] # if .file exists, back up
             then    
                 mkdir -p $olddir # create dotfiles_old in homedir
                 echo "Move ~/.$file to $olddir"
-                mv ~/.$file ~/$olddir
+                mv ~/.$file $olddir
             fi
             echo "Creating symlink to ~/.$file"
             ln -s $dfdir/$file ~/.$file

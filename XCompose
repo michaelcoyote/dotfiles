@@ -1,0 +1,115 @@
+include "/usr/share/X11/locale/en_US.UTF-8/Compose"
+
+# EMOTICONS
+<Multi_key> <o> <underscore> <o>                    : "ಠ_ಠ"                 # LOOK OF DISAPPROVAL
+<Multi_key> <t> <f>                                 : "(╯°□°）╯︵ ┻━┻)"     # TABLE FLIP
+<Multi_key> <t> <f> <2>                             : "(ノಠ益ಠ)ノ彡┻━┻"     # TABLE FLIP
+<Multi_key> <i> <d> <k>                             : "¯\_(ツ)_/¯"          # SHRUG
+<Multi_key> <n> <o> <t> <e>                         : "🎶"                   # NOTE
+#
+# Currency
+<Multi_key> <y> <e> <n>                             : "¥"                   # YEN
+<Multi_key> <e> <u> <r>                             : "€"                   # EURO
+<Multi_key> <u> <k> <p>                             : "£"                   # UK POUND
+<Multi_key> <w> <o> <n>                             : "₩"                   # KOREAN WON
+
+#
+# Mathematical symbols
+<Multi_key> <exclam> <equal>                        : "≠" U2260             # NOT EQUAL TO
+<Multi_key> <slash> <equal>                         : "≠" U2260             # NOT EQUAL TO
+<Multi_key> <less> <equal>                          : "≤" U2264             # LESS-THAN OR EQUAL TO
+<Multi_key> <greater> <equal>                       : "≥" U2265             # GREATER-THAN OR EQUAL TO
+<Multi_key> <exclam> <less> <greater>               : "≸" U2278             # NEITHER LESS-THAN NOR GREATER-THAN
+<Multi_key> <i> <n>                                 : "∈" U2208             # ELEMENT OF
+<Multi_key> <exclam> <i> <n>                        : "∉" U2209             # NOT AN ELEMENT OF
+<Multi_key> <n> <i>                                 : "∋" U220B             # CONTAINS AS MEMBER
+<Multi_key> <slash> <n> <i>                         : "∌" U220C             # DOES NOT CONTAIN AS MEMBER
+<Multi_key> <plus> <minus>                          : "∓" U2213             # PLUS OR MINUS
+<Multi_key> <s> <q>                                 : "√" U221A             # SQUARE ROOT
+<Multi_key> <s> <q> <3>                             : "∛" U221B             # CUBE ROOT
+<Multi_key> <s> <q> <4>                             : "∜" U221C             # FOURTH ROOT
+#
+# Emoji
+# 💡 💢 💣 💤 💥 💦 💧 💨 💫  (1F4A1-1F4A8 and 1F4AB). 
+<Multi_key> <Multi_key> <i> <d> <e> <a>             : "💡" U1F4A1            # LIGHT BULB
+<Multi_key> <Multi_key> <a> <n> <g> <e> <r>         : "💢" U1F4A2            # ANGER SYMBOL
+<Multi_key> <Multi_key> <b> <o> <m> <b>             : "💣" U1F4A3            # BOMB
+<Multi_key> <Multi_key> <z> <z> <z>                 : "💤" U1F4A4            # SLEEPING 
+<Multi_key> <Multi_key> <p> <o> <w>                 : "💥" U1F4A5            # COLLISION
+<Multi_key> <Multi_key> <s> <w> <e> <a> <t>         : "💦" U1F4A6            # SPLASHING SWEAT
+<Multi_key> <Multi_key> <d> <r> <o> <p>             : "💧" U1F4A7            # DROPLET
+<Multi_key> <Multi_key> <z> <i> <p>                 : "💨" U1F4A8            # DASH
+<Multi_key> <Multi_key> <p> <o> <o>                 : "💩" U1F4A9            # PILE OF POO
+<Multi_key> <Multi_key> <d> <i> <z>                 : "💫" U1F4AB            # DIZZY
+<Multi_key> <Multi_key> <dollar> <b> <a> <g>        : "💰" U1F4B0            # MONEY BAG
+<Multi_key> <Multi_key> <c> <a> <k> <e>             : "🍰" U1F370            # SHORTCAKE
+<Multi_key> <Multi_key> <b> <d> <a> <y>             : "🎂" U1F382            # BIRTHDAY CAKE
+<Multi_key> <Multi_key> <A> <O> <K>                 : "👌" U1F44C            # OK HAND 
+<Multi_key> <Multi_key> <t> <h> <m> <u> <p>         : "👍" U1F44D            # THUMBS UP
+<Multi_key> <Multi_key> <t> <h> <m> <d> <n>         : "👎" U1F44E            # THUMBS DOWN
+<Multi_key> <Multi_key> <k> <i> <s> <s>             : "💋" U1F48B            # KISS
+
+
+
+
+# Playing Cards uses surrounding brackets and uses full suits
+<Multi_key> <bracketleft> <A> <S> <bracketright>    : "🂡" U1F0A1            #  ACE OF SPADES
+<Multi_key> <bracketleft> <2> <S> <bracketright>    : "🂢" U1F0A2            #  TWO OF SPADES
+<Multi_key> <bracketleft> <3> <S> <bracketright>    : "🂣" U1F0A3            #  THREE OF SPADES
+<Multi_key> <bracketleft> <4> <S> <bracketright>    : "🂤" U1F0A4            #  FOUR OF SPADES
+<Multi_key> <bracketleft> <5> <S> <bracketright>    : "🂥" U1F0A5            #  FIVE OF SPADES
+<Multi_key> <bracketleft> <6> <S> <bracketright>    : "🂦" U1F0A6            #  SIX OF SPADES
+<Multi_key> <bracketleft> <7> <S> <bracketright>    : "🂧" U1F0A7            #  SEVEN OF SPADES
+<Multi_key> <bracketleft> <8> <S> <bracketright>    : "🂨" U1F0A8            #  EIGHT OF SPADES
+<Multi_key> <bracketleft> <9> <S> <bracketright>    : "🂩" U1F0A9            #  NINE OF SPADES
+<Multi_key> <bracketleft> <T> <S> <bracketright>    : "🂪" U1F0AA            #  TEN OF SPADES
+<Multi_key> <bracketleft> <J> <S> <bracketright>    : "🂫" U1F0AB            #  JACK OF SPADES
+<Multi_key> <bracketleft> <N> <S> <bracketright>    : "🂬" U1F0AC            #  KNIGHT OF SPADES
+<Multi_key> <bracketleft> <Q> <S> <bracketright>    : "🂭" U1F0AD            #  QUEEN OF SPADES
+<Multi_key> <bracketleft> <K> <S> <bracketright>    : "🂮" U1F0AE            #  KING OF SPADES
+<Multi_key> <bracketleft> <A> <H> <bracketright>    : "🂱" U1F0B1            #  ACE OF HEARTS
+<Multi_key> <bracketleft> <2> <H> <bracketright>    : "🂲" U1F0B2            #  TWO OF HEARTS
+<Multi_key> <bracketleft> <3> <H> <bracketright>    : "🂳" U1F0B3            #  THREE OF HEARTS
+<Multi_key> <bracketleft> <4> <H> <bracketright>    : "🂴" U1F0B4            #  FOUR OF HEARTS
+<Multi_key> <bracketleft> <5> <H> <bracketright>    : "🂵" U1F0B5            #  FIVE OF HEARTS
+<Multi_key> <bracketleft> <6> <H> <bracketright>    : "🂶" U1F0B6            #  SIX OF HEARTS
+<Multi_key> <bracketleft> <7> <H> <bracketright>    : "🂷" U1F0B7            #  SEVEN OF HEARTS
+<Multi_key> <bracketleft> <8> <H> <bracketright>    : "🂸" U1F0B8            #  EIGHT OF HEARTS
+<Multi_key> <bracketleft> <9> <H> <bracketright>    : "🂹" U1F0B9            #  NINE OF HEARTS
+<Multi_key> <bracketleft> <T> <H> <bracketright>    : "🂺" U1F0BA            #  TEN OF HEARTS
+<Multi_key> <bracketleft> <J> <H> <bracketright>    : "🂻" U1F0BB            #  JACK OF HEARTS
+<Multi_key> <bracketleft> <N> <H> <bracketright>    : "🂼" U1F0BC            #  KNIGHT OF HEARTS
+<Multi_key> <bracketleft> <Q> <H> <bracketright>    : "🂽" U1F0BD            #  QUEEN OF HEARTS
+<Multi_key> <bracketleft> <K> <H> <bracketright>    : "🂾" U1F0BE            #  KING OF HEARTS
+<Multi_key> <bracketleft> <A> <D> <bracketright>    : "🃁" U1F0C1            #  ACE OF DIAMONDS
+<Multi_key> <bracketleft> <2> <D> <bracketright>    : "🃂" U1F0C2            #  TWO OF DIAMONDS
+<Multi_key> <bracketleft> <3> <D> <bracketright>    : "🃃" U1F0C3            #  THREE OF DIAMONDS
+<Multi_key> <bracketleft> <4> <D> <bracketright>    : "🃄" U1F0C4            #  FOUR OF DIAMONDS
+<Multi_key> <bracketleft> <5> <D> <bracketright>    : "🃅" U1F0C5            #  FIVE OF DIAMONDS
+<Multi_key> <bracketleft> <6> <D> <bracketright>    : "🃆" U1F0C6            #  SIX OF DIAMONDS
+<Multi_key> <bracketleft> <7> <D> <bracketright>    : "🃇" U1F0C7            #  SEVEN OF DIAMONDS
+<Multi_key> <bracketleft> <8> <D> <bracketright>    : "🃈" U1F0C8            #  EIGHT OF DIAMONDS
+<Multi_key> <bracketleft> <9> <D> <bracketright>    : "🃉" U1F0C9            #  NINE OF DIAMONDS
+<Multi_key> <bracketleft> <T> <D> <bracketright>    : "🃊" U1F0CA            #  TEN OF DIAMONDS
+<Multi_key> <bracketleft> <J> <D> <bracketright>    : "🃋" U1F0CB            #  JACK OF DIAMONDS
+<Multi_key> <bracketleft> <N> <D> <bracketright>    : "🃌" U1F0CC            #  KNIGHT OF DIAMONDS
+<Multi_key> <bracketleft> <Q> <D> <bracketright>    : "🃍" U1F0CD            #  QUEEN OF DIAMONDS
+<Multi_key> <bracketleft> <K> <D> <bracketright>    : "🃎" U1F0CE            #  KING OF DIAMONDS
+<Multi_key> <bracketleft> <A> <C> <bracketright>    : "🃑" U1F0D1            #  ACE OF CLUBS
+<Multi_key> <bracketleft> <2> <C> <bracketright>    : "🃒" U1F0D2            #  TWO OF CLUBS
+<Multi_key> <bracketleft> <3> <C> <bracketright>    : "🃓" U1F0D3            #  THREE OF CLUBS
+<Multi_key> <bracketleft> <4> <C> <bracketright>    : "🃔" U1F0D4            #  FOUR OF CLUBS
+<Multi_key> <bracketleft> <5> <C> <bracketright>    : "🃕" U1F0D5            #  FIVE OF CLUBS
+<Multi_key> <bracketleft> <6> <C> <bracketright>    : "🃖" U1F0D6            #  SIX OF CLUBS
+<Multi_key> <bracketleft> <7> <C> <bracketright>    : "🃗" U1F0D7            #  SEVEN OF CLUBS
+<Multi_key> <bracketleft> <8> <C> <bracketright>    : "🃘" U1F0D8            #  EIGHT OF CLUBS
+<Multi_key> <bracketleft> <9> <C> <bracketright>    : "🃙" U1F0D9            #  NINE OF CLUBS
+<Multi_key> <bracketleft> <T> <C> <bracketright>    : "🃚" U1F0DA            #  TEN OF CLUBS
+<Multi_key> <bracketleft> <J> <C> <bracketright>    : "🃛" U1F0DB            #  JACK OF CLUBS
+<Multi_key> <bracketleft> <N> <C> <bracketright>    : "🃜" U1F0DC            #  KNIGHT OF CLUBS
+<Multi_key> <bracketleft> <Q> <C> <bracketright>    : "🃝" U1F0DD            #  QUEEN OF CLUBS
+<Multi_key> <bracketleft> <K> <C> <bracketright>    : "🃞" U1F0DE            #  KING OF CLUBS
+<Multi_key> <bracketleft> <C> <B> <bracketright>    : "🂠" U1F0A0            #  BACK
+<Multi_key> <bracketleft> <B> <J> <bracketright>    : "🃏" U1F0CF            #  BLACK JOKER
+<Multi_key> <bracketleft> <W> <J> <bracketright>    : "🃟" U1F0DF            #  WHITE JOKER
+

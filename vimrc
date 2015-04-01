@@ -16,7 +16,7 @@ let mapleader = ","
 let g:mapleader = ","
 
 " For example, saving a file fast.
-nmap <leader>w :w!<cr>
+nmap <Leader>w :w!<cr>
 " 
 
 " ++++++++++++++++++++++++++++++++++++++++++++++++++++ 
@@ -77,7 +77,7 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 colorscheme elflord
 " turn on syntax highlighting
 syntax enable
-" Enable filetype detection w/ pugins & smart indenting
+" Enable filetype detection w/ plugins & smart indenting
 filetype on
 filetype plugin on
 filetype indent on
@@ -91,18 +91,18 @@ if v:version >= 700
     " Enable spell check for text files
     autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en
     " Pressing ,ss will toggle and untoggle spell checking
-    map <leader>ss :setlocal spell!<cr>
+    map <Leader>ss :setlocal spell!<cr>
     " Shortcuts using <leader>
-    map <leader>sn ]s
-    map <leader>sp [s
-    map <leader>sa zg
-    map <leader>s? z=
+    map <Leader>sn ]s
+    map <Leader>sp [s
+    map <Leader>sa zg
+    map <Leader>s? z=
 endif
 
 " Vim search ++++++++++++++++++++++++++++++++++++++++++++++++++
 " do useful search things
 if has('extra_search')
-	" Highlite results and match while typing search string. 
+	" Highlight results and match while typing search string. 
 	set incsearch hlsearch
 endif
 " Use case insensitive search, except when using capital letters

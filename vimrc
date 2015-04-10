@@ -9,13 +9,16 @@
 " see, I told you..  
 set nocompatible
 
+" Vim keymapping +++++++++++++++++++++++++++++++++++++++++++++++
 " Set up the mapleader here in case I want it below
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
 
-" For example, saving a file fast.
+" Remove the Windows ^M - when the encodings gets messed up
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+" save a file fast.
 nmap <Leader>w :w!<cr>
 " 
 
@@ -67,10 +70,6 @@ set nostartofline
 " Time spent waiting for a ctrl key/sequence to complete in ms
 set timeoutlen=500
 
-" Vim keymapping +++++++++++++++++++++++++++++++++++++++++++++++
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-" 
 
 " Vim textual color behaviour ++++++++++++++++++++++++++++++++
 " color scheme - I love me some elflord
@@ -137,7 +136,7 @@ set ttyfast
 " Run pathogen if it exists in the correct place.
 if filereadable(expand("~/.vim/autoload/pathogen.vim"))
     execute pathogen#infect()
-    echo "Pathogen enabled"
+    "echo "Pathogen enabled"
 else
     echo "Pathogen not found"
 endif

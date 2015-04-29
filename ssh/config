@@ -1,0 +1,27 @@
+# SSH Config
+Host *
+    ForwardAgent no
+    ForwardX11 no
+    ForwardX11Trusted yes
+    Protocol 2
+    ServerAliveInterval 60
+    ServerAliveCountMax 30
+
+#  The usual suspects
+
+Host core
+    HostName core.ele-mental.org
+    User michael
+    ForwardAgent yes
+    ForwardX11 yes
+    ForwardX11Trusted yes
+
+Host warp
+    HostName warp.akibako.net
+    User michael
+
+Host tc
+    HostName tilde.club
+    User michaelcoyote
+    LocalForward 119 127.0.0.1:119
+

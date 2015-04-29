@@ -26,13 +26,17 @@ nmap <Leader>w :w!<cr>
 " set up the generic GUI options
 if has('gui_running')
 	" set up a decent default size 
-	set lines=45 columns=160
+	set lines=27 columns=88
     " remove tearoffs
     set guioptions-=T
     " add tab pages
     set guioptions+=e
     set t_Co=256
     set guitablabel=%M\ %t
+    " useful window resize commands
+    nmap <Leader>rs :set lines=27 columns=88<cr>
+    nmap <Leader>rm :set lines=40 columns=132<cr>
+    nmap <Leader>rl :set lines=45 columns=160<cr>
 	" Per OS/GUI options ++++++++++++++++++++++++++
 	" Set up fonts and other items on a GUI by GUI basis...
 	if has('gui_win32')

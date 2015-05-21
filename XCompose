@@ -6,6 +6,7 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 <Multi_key> <t> <f> <2>                             : "(ノಠ益ಠ)ノ彡┻━┻"     # TABLE FLIP
 <Multi_key> <i> <d> <k>                             : "¯\_(ツ)_/¯"          # SHRUG
 <Multi_key> <n> <o> <t> <e>                         : "🎶"                   # NOTE
+<Multi_key> <n> <o> <t> <e> <1>                     : "♫"                   # NOTE
 #
 # Currency
 <Multi_key> <y> <e> <n>                             : "¥"                   # YEN

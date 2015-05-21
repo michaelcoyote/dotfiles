@@ -70,6 +70,9 @@ export PROMPT_COMMAND="history -a"
 # source in stuff from files if they exist.
 test -e ~/.alias && . ~/.alias
 test -e ~/.bash_functions && . ~/.bash_functions
+test -e ~/.bashs && . ~/.bashs
+# bring in any locals last so they override
+test -e ~/.bash_local && . ~/.bash_local
 
 
 export PS1 PS2

@@ -23,5 +23,5 @@ Host warp
 Host tc
     HostName tilde.club
     User michaelcoyote
-    LocalForward 119 127.0.0.1:119
+    #LocalForward 119 127.0.0.1:119
 

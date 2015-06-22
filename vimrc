@@ -95,7 +95,7 @@ au BufRead,BufNewFile *.md set filetype=markdown shiftwidth=2 tabstop=2
 " turn on spellcheck if version 7 or above
 if v:version >= 700
     " Enable spell check for text files
-    autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en
+    autocmd BufNewFile,BufRead *.{txt,md} setlocal spell spelllang=en
     " Pressing ,ss will toggle and untoggle spell checking
     map <Leader>ss :setlocal spell!<cr>
     " Shortcuts using <leader>

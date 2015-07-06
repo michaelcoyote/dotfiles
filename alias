@@ -1,0 +1,12 @@
+# basic aliases file 
+# this is for things that don't really need a function of their own
+# should be portable and not tied to functions so much but strictly
+# local aliases should end up in bash_local
+
+# alias changing to commonly used directories
+alias work  = 'cd ~/working/'
+alias dot   = 'cd ~/.dotfiles/'
+alias sdot  = 'cd ~/.sdotfiles/'
+alias site  = 'cd ~/Documents/work/site_notes/'
+alias doc   = 'cd ~/Documents/'
+alias dnl   = 'cd ~/Downloads/'

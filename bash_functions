@@ -10,10 +10,10 @@
 function ff() { find . -type f -iname '*'"$*"'*' -ls ; }
 
 # Find a file with pattern $1 in name and Execute $2 on it:
-function fe() { find . -type f -iname '*'"${1:-}"'*' \
+function fexec() { find . -type f -iname '*'"${1:-}"'*' \
 -exec ${2:-file} {} \;  ; }
 
-function swap()
+function swapname()
 { # Swap 2 filenames around, if they exist (from Uzi's bashrc).
     local TMPFILE=tmp.$$
 
@@ -110,17 +110,15 @@ function mydf()         # Pretty-print of 'df' output.
     done
 }
 
+function netif() {
+  ifconfig -a | awk '/^[^[[:space:]]/{a[NR]=$1} 
+    END{count=asort(a,b);for(i=1;i<count;i++){printf "\"%s\",", b[i]}; printf "\"%s\"\n", b[count]}'
+}
+
 # TODO munge the ip and myip function together & list IPs by iface.
 function ip() {
-ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{ print $2 }'
+ifconfig | grep -v '127.0.0.1' | awk '/inet/ { print $2 }'
 } 
-
-function myip() # Get IP adress on ethernet.
-{
-    MY_IP=$(/sbin/ifconfig eth0 | awk '/inet/ { print $2 } ' |
-      sed -e s/addr://)
-    echo ${MY_IP:-"Not connected"}
-}
 
 function hii()   # Get current host related info.
 {

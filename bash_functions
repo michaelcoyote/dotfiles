@@ -110,14 +110,27 @@ function mydf()         # Pretty-print of 'df' output.
     done
 }
 
-function netif() {
-  ifconfig -a | awk '/^[^[[:space:]]/{a[NR]=$1} 
-    END{count=asort(a,b);for(i=1;i<count;i++){printf "\"%s\",", b[i]}; printf "\"%s\"\n", b[count]}'
+function iflist() {
+  ifconfig -a | awk '/^[^[[:space:]]/ { split($0,iface,"  ");
+         print iface[1]
+    }'
 }
 
-# TODO munge the ip and myip function together & list IPs by iface.
+function ifarray() {
+  ifconfig -a | awk '/^[^[[:space:]]/{a[NR]=$1} 
+    END {count=asort(a,b);
+        for(i=1;i<count;i++){printf "%s,", b[i]};
+        printf "%s\n", b[count]
+    }'
+}
+
+# TODO clean this up to just print if:addr pairs.
 function ip() {
-ifconfig | grep -v '127.0.0.1' | awk '/inet/ { print $2 }'
+    ifconfig -a | awk 'BEGIN {RS="";FS="\n"} 
+        {split($1,iface," "); 
+            gsub(/^[ /t]+inet/,"",$2); 
+            if ($2 ~ /addr/) print iface[1]":"$2
+        }'
 } 
 
 function hii()   # Get current host related info.

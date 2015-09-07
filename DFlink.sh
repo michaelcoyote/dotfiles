@@ -8,7 +8,7 @@
 ########## Variables
 dfdir=~/.dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc gitconfig wgetrc screenrc XCompose ssh/config bash_functions config/htop/htoprc config/parcellite/parcelliterc alias"    # list of files/folders to symlink in homedir
+files="bashrc vimrc gitconfig wgetrc screenrc XCompose ssh/config bash_functions config/htop/htoprc config/parcellite/parcelliterc alias psqlrc"    # list of files/folders to symlink in homedir
 ##########
 
 # do all the work from the dotfiles dir

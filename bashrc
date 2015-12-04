@@ -78,4 +78,3 @@ test -e ~/.bash_local && . ~/.bash_local
 export PS1 PS2
 umask 022
 
-

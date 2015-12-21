@@ -1,4 +1,4 @@
-include "/usr/share/X11/locale/en_US.UTF-8/Compose"
+include "%L"
 
 # EMOTICONS
 <Multi_key> <o> <underscore> <o>                    : "ಠ_ಠ"                 # LOOK OF DISAPPROVAL

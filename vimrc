@@ -9,6 +9,9 @@
 " see, I told you..  
 set nocompatible
 
+" turn off the splash screen
+set shortmess+=I
+
 " Vim keymapping +++++++++++++++++++++++++++++++++++++++++++++++
 " Set up the mapleader here in case I want it below
 " With a map leader it's possible to do extra key combinations

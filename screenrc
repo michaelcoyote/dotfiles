@@ -36,6 +36,8 @@ screen 1
 ### Kanji code
 #kanji euc euc
 #defkanji euc
+# use 256 color if avalible
+term screen-256color
 
 #termcapinfo xterm ti@:te@
 #

@@ -49,12 +49,16 @@ ulimit -S -c 0          # turn off coredumps
 set -o notify           # notify when bg jobs terminate
 
 shopt -s cdspell        # correct pathnames for cd command
-shopt -s checkjobs      # check for running jobs before exit
 shopt -s checkwinsize   # Check and update term size after every command
 shopt -s cmdhist        # save multiline cmds in same history entry
 shopt -s no_empty_cmd_completion  # no tab completion for empty prompt
 shopt -s histappend histreedit histverify 
 shopt -s extglob        # extended pattern matching & programmable completion
+# bash version gt 4
+if [ $BASH_VERSINFO -gt 3 ]; 
+  then 
+    shopt -s checkjobs      # check for running jobs before exit
+fi
 
 # Disable options:
 shopt -u mailwarn

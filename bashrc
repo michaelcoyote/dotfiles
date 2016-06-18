@@ -69,6 +69,7 @@ unset MAILCHECK        # Don't want my shell to warn me of incoming mail
 #   http://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows
 export HISTSIZE=9000
 export HISTCONTROL=ignorespace:ignoredups
+export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 export PROMPT_COMMAND="history -a"
 
 # source in stuff from files if they exist.

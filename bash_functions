@@ -176,6 +176,14 @@ function corename()   # Get name of app that created a corefile.
     done
 }
 
+# convert mac to an IPv6 link local
+mac2ipv6 () {
+    IFS=':'; set $1; unset IFS
+    ipv6_address="fe80::$(printf %02x $((0x$1 ^ 2)))$2:${3}ff:fe$4:$5$6"
+    echo $ipv6_address
+}
+
+
 # change xterm frame title 
 function xtitle()
 {

@@ -13,17 +13,20 @@ set nocompatible
 set shortmess+=I
 
 " Vim keymapping +++++++++++++++++++++++++++++++++++++++++++++++
-" Set up the mapleader here in case I want it below
-" With a map leader it's possible to do extra key combinations
+" Set up the leader and localleader here in case I want it below
+" With a leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
+let maplocalleader = "-"
+let g:maplocalleader = "-"
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " save a file fast.
 nmap <Leader>w :w!<cr>
-" 
+" quit a file fast 
+nmap <Leader>q :wq!<cr>
 
 " ++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 " set up the generic GUI options
@@ -37,9 +40,9 @@ if has('gui_running')
     set t_Co=256
     set guitablabel=%M\ %t
     " useful window resize commands
-    nmap <Leader>rs :set lines=27 columns=88<cr>
-    nmap <Leader>rm :set lines=40 columns=132<cr>
-    nmap <Leader>rl :set lines=45 columns=160<cr>
+    nmap <leader>ws :set lines=27 columns=88<cr>
+    nmap <leader>wm :set lines=40 columns=132<cr>
+    nmap <leader>wl :set lines=45 columns=160<cr>
 	" Per OS/GUI options ++++++++++++++++++++++++++
 	" Set up fonts and other items on a GUI by GUI basis...
 	if has('gui_win32')
@@ -53,6 +56,31 @@ if has('gui_running')
 	endif
 
 endif
+
+" Useful mapped commands
+"
+" toggle line numbers
+nnoremap <Leader>n :set invnumber<cr>
+" toggle syntax (when it bogs down vim)
+function! SynToggle()
+    if exists("g:syntax_on")
+        syntax off
+    else
+        syntax enable
+    endif
+endfunction
+nnoremap <leader>s :call SynToggle()<cr>
+" toggle 80 column bar
+function! EightyColumnBar()
+    if &colorcolumn == 0
+        setlocal colorcolumn=80
+    else
+        setlocal colorcolumn=0
+    endif
+endfunction
+nnoremap <leader>b :call EightyColumnBar()<cr>
+" toggle paste mode
+nnoremap <leader>p :set paste!<cr>
 
 " set fast terms and mouse modes for local terms
 "if &term =~ 'linux'|'xterm'|'rvxt'

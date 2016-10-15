@@ -178,7 +178,7 @@ set ttyfast
 " Run pathogen if it exists in the correct place.
 if filereadable(expand("~/.vim/autoload/pathogen.vim"))
     execute pathogen#infect()
-    "echo "Pathogen enabled"
+    " echomsg "Pathogen enabled"
 else
-    echo "Pathogen not found"
+    echomsg "Pathogen not found"
 endif

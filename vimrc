@@ -81,6 +81,10 @@ endfunction
 nnoremap <leader>b :call EightyColumnBar()<cr>
 " toggle paste mode
 nnoremap <leader>p :set paste!<cr>
+" quick edit vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+" quicksource vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " set fast terms and mouse modes for local terms
 "if &term =~ 'linux'|'xterm'|'rvxt'

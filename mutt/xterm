@@ -1,0 +1,52 @@
+# default header stuff 
+#color hdrdefault brightblack black 
+#color header white black Subject:
+#color header brightred black ^From:
+#color header brightred black ^To:
+#color header brightblack black X-Mailer:
+#color header brightgreen black X-Newsreader:
+
+# default body stuff
+color body brightred black "([a-z]*://|mailto:)[^\" \n\t]*[^\"., \n\t>]"
+color body brightgreen black sec@[-a-z_0-9.%$']+
+color body brightwhite black "[-a-z_0-9.%$]+@[-a-z_0-9.%]+\\.[a-z][a-z]+"
+color body brightgreen black "( |^)[;:]-*[)>(<|]+"
+
+color normal white black
+
+# do 3 levels of quotes in different colors
+color quoted green black 
+color quoted1 brightblue black
+color quoted2 brightblack black
+
+# hide people's sigs so they arn't as noticable
+color signature blue black
+
+# color the status bar!
+color status white blue # Status line @ bottom
+
+# color messages based on priority and eye sorting
+# important messages
+color index brightred black "support@guldan.net"
+color index brightred black "support@ele-mental.org"
+color index brightred black OpenView
+
+# possible important messages
+color index brightgreen black cisco.com
+color index green black oar.net
+
+# color my group yellow
+color index brightyellow black dvmiller@*
+color index brightyellow black @guldan.net
+color index brightyellow black naospeach@gmail.com
+color index brightyellow black naokoinoguchi@gmail.com
+
+# other colors I use to make things pleasant
+color attachment black white
+color error brightred black 
+color tilde brightblack black
+color markers red white
+color tree blue black
+color indicator white black
+color search white black
+color message black white

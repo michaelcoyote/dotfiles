@@ -21,7 +21,7 @@ else
     export EDITOR;
 fi
 
-#set up less as the editor of choice
+# set up less as the pager of choice if it is installed
 if test -x `which less`; then
     PAGER="`which less`";
     export PAGER
@@ -44,7 +44,7 @@ if test -x `which less`; then
     export LESS_TERMCAP_us=$'\E[01;32m'     # Underline Start
 fi
 
-#  shell settings
+# shell settings
 ulimit -S -c 0          # turn off coredumps
 set -o notify           # notify when bg jobs terminate
 
@@ -77,6 +77,7 @@ test -e ~/.alias && . ~/.alias
 test -e ~/.bash_functions && . ~/.bash_functions
 test -e ~/.bashs && . ~/.bashs
 # bring in any locals last so they override
+test -e ~/.bash_${HOSTNAME} && . ~/.bash_${HOSTNAME}
 test -e ~/.bash_local && . ~/.bash_local
 
 

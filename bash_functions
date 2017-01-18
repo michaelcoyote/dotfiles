@@ -11,51 +11,19 @@ function ff() { find . -type f -iname '*'"$*"'*' -ls ; }
 
 # Find a file with pattern $1 in name and Execute $2 on it:
 function fexec() { find . -type f -iname '*'"${1:-}"'*' \
--exec ${2:-file} {} \;  ; }
+-exec "${2:-file}" {} \;  ; }
 
 function swapname()
 { # Swap 2 filenames around, if they exist (from Uzi's bashrc).
     local TMPFILE=tmp.$$
 
     [ $# -ne 2 ] && echo "swap: 2 arguments needed" && return 1
-    [ ! -e $1 ] && echo "swap: $1 does not exist" && return 1
-    [ ! -e $2 ] && echo "swap: $2 does not exist" && return 1
+    [ ! -e "$1" ] && echo "swap: $1 does not exist" && return 1
+    [ ! -e "$2" ] && echo "swap: $2 does not exist" && return 1
 
     mv "$1" $TMPFILE
     mv "$2" "$1"
     mv $TMPFILE "$2"
-}
-
-function extract {
- if [ -z "$1" ]; then
-    # display usage if no parameters given
-    echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
- else
-    if [ -f $1 ] ; then
-        # NAME=${1%.*}
-        # mkdir $NAME && cd $NAME
-        case $1 in
-          *.tar.bz2)   tar xvjf ../$1    ;;
-          *.tar.gz)    tar xvzf ../$1    ;;
-          *.tar.xz)    tar xvJf ../$1    ;;
-          *.lzma)      unlzma ../$1      ;;
-          *.bz2)       bunzip2 ../$1     ;;
-          *.rar)       unrar x -ad ../$1 ;;
-          *.gz)        gunzip ../$1      ;;
-          *.tar)       tar xvf ../$1     ;;
-          *.tbz2)      tar xvjf ../$1    ;;
-          *.tgz)       tar xvzf ../$1    ;;
-          *.zip)       unzip ../$1       ;;
-          *.Z)         uncompress ../$1  ;;
-          *.7z)        7z x ../$1        ;;
-          *.xz)        unxz ../$1        ;;
-          *.exe)       cabextract ../$1  ;;
-          *)           echo "extract: '$1' - unknown archive method" ;;
-        esac
-    else
-        echo "$1 - file does not exist"
-    fi
-fi
 }
 
 
@@ -64,7 +32,7 @@ fi
 #-------------------------------------------------------------
 
 
-function myps() { ps $@ -u $USER -o pid,%cpu,%mem,bsdtime,command ; }
+function myps() { ps "$@" -u "$USER" -o pid,%cpu,%mem,bsdtime,command ; }
 function pp() { myps f | awk '!/awk/ && $0~var' var=${1:-".*"} ; }
 
 
@@ -80,7 +48,7 @@ function killps()   # kill by process name
     do
         pname=$(myps | awk '$1~var { print $5 }' var=$pid )
         if ask "Kill process $pid <$pname> with signal $sig?"
-            then kill $sig $pid
+            then kill "$sig" "$pid"
         fi
     done
 }
@@ -105,8 +73,8 @@ function mydf()         # Pretty-print of 'df' output.
                out=$out"-"
             fi
         done
-        out=${info[2]}" "$out"] ("$free" free on "$fs")"
-        echo -e $out
+        out="${info[2]} $out] ($free free on $fs)"
+        echo -e "$out"
     done
 }
 
@@ -142,7 +110,7 @@ function hii()   # Get current host related info.
     echo -e "\nCurrent date :$NC " ; date
     echo -e "\nMachine stats :$NC " ; uptime
     echo -e "\nMemory stats :$NC " ; free
-    echo -e "\nDiskspace :$NC " ; mydf / $HOME
+    echo -e "\nDiskspace :$NC " ; mydf / "$HOME"
     echo -e "\nLocal IP Addresses :$NC" ; ip
     echo -e "\nOpen connections :$NC "; netstat -pan --inet;
     echo
@@ -178,9 +146,9 @@ function corename()   # Get name of app that created a corefile.
 
 # convert mac to an IPv6 link local
 mac2ipv6 () {
-    IFS=':'; set $1; unset IFS
+    IFS=':'; set "$1"; unset IFS
     ipv6_address="fe80::$(printf %02x $((0x$1 ^ 2)))$2:${3}ff:fe$4:$5$6"
-    echo $ipv6_address
+    echo "$ipv6_address"
 }
 
 
@@ -193,20 +161,6 @@ function xtitle()
     *)  ;;
     esac
 }
-
-
-# Aliases that use xtitle
-alias xhtop='xtitle htop on `hostname` && htop'
-
-# .. and functions
-function xman()
-{
-    for i ; do
-        xtitle The $(basename $1|tr -d .[:digit:]) manual
-        command man -a "$i"
-    done
-}
-
 
 # really basic grep function to find IP/netmask octets.
 function ipgrep()

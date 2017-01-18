@@ -13,17 +13,17 @@
 #fi
 
 # set up vim as the editor of choice
-if test -x `which vim` ; then
-    EDITOR="`which vim`";
+if test -x "$(which vim)" ; then
+    EDITOR="$(which vim)";
     export EDITOR;
 else
-    EDITOR="`which vi`";
+    EDITOR="$(which vi)";
     export EDITOR;
 fi
 
 # set up less as the pager of choice if it is installed
-if test -x `which less`; then
-    PAGER="`which less`";
+if test -x "$(which less)"; then
+    PAGER="$(which less)";
     export PAGER
     alias more='less'
     export LESSCHARSET='utf-8'
@@ -55,7 +55,7 @@ shopt -s no_empty_cmd_completion  # no tab completion for empty prompt
 shopt -s histappend histreedit histverify 
 shopt -s extglob        # extended pattern matching & programmable completion
 # bash version gt 4
-if [ $BASH_VERSINFO -gt 3 ]; 
+if [ "$BASH_VERSINFO -gt 3" ]; 
   then 
     shopt -s checkjobs      # check for running jobs before exit
 fi
@@ -77,7 +77,7 @@ test -e ~/.alias && . ~/.alias
 test -e ~/.bash_functions && . ~/.bash_functions
 test -e ~/.bashs && . ~/.bashs
 # bring in any locals last so they override
-test -e ~/.bash_${HOSTNAME} && . ~/.bash_${HOSTNAME}
+test -e ~/.bash_"${HOSTNAME}" && . ~/.bash_"${HOSTNAME}"
 test -e ~/.bash_local && . ~/.bash_local
 
 

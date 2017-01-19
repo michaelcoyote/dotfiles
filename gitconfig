@@ -13,6 +13,7 @@
   st = status
   br = branch
   hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  ol = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
   type = cat-file -t
   dump = cat-file -p
 

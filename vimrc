@@ -182,3 +182,9 @@ if filereadable(expand("~/.vim/autoload/pathogen.vim"))
 else
     echomsg "Pathogen not found"
 endif
+
+" ctags for the usual projects
+"
+map <C-M> :!ctags -R -o $HOME/.tags/rkpythonscripts $HOME/sdmain ;ctags -R -o $HOME/.tags/rkpython $HOME/sdmain/src/py <CR>
+set tags+=$HOME/.tags/rkpythonscripts
+set tags+=$HOME/.tags/rkpython

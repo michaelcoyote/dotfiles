@@ -82,9 +82,9 @@ nnoremap <leader>b :call EightyColumnBar()<cr>
 " toggle paste mode
 nnoremap <leader>p :set paste!<cr>
 " quick edit vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :vsplit $HOME/.dotfiles/vimrc<cr>
 " quicksource vimrc
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sv :source $HOME/.dotfiles/vimrc<cr>
 
 " set fast terms and mouse modes for local terms
 "if &term =~ 'linux'|'xterm'|'rvxt'
@@ -109,7 +109,6 @@ set nostartofline
 " Time spent waiting for a ctrl key/sequence to complete in ms
 set timeoutlen=500
 
-
 " Vim textual color behaviour ++++++++++++++++++++++++++++++++
 " color scheme - I love me some elflord
 colorscheme elflord
@@ -119,12 +118,6 @@ syntax enable
 filetype on
 filetype plugin on
 filetype indent on
-
-" Set up autocommands for various file types
-"
-" Make sure context highlighting works for *.md markdown files
-"  this overrides the typical behavior of highlighting Modula-2
-au BufRead,BufNewFile *.md set filetype=markdown shiftwidth=2 tabstop=2
 
 " Vim Spellchecker +++++++++++++++++++++++++++++++++++++++++++
 " turn on spellcheck if version 7 or above
@@ -158,6 +151,18 @@ set nobackup
 set writebackup
 " Set to auto read when a file is changed from the outside
 set autoread
+" Set up autocommands for various file types
+"
+" Make sure context highlighting works for *.md markdown files
+"  this overrides the typical behavior of highlighting Modula-2
+au BufRead,BufNewFile *.md set filetype=markdown shiftwidth=2 tabstop=2
+" Python and shell
+au BufRead,BufNewFile *.{py,pyw}
+            \ set tabstop=4 softtabstop=4 shiftwidth=4 |
+            \ set textwidth=79 expandtab autoindent |
+            \ set fileformat=unix
+au BufRead,BufNewFile *.{js,html,cs}
+            \ set tabstop=2 softtabstop=2 shiftwidth=2
 
 " Vim UI +++++++++++++++++++++++++++++++++++++++++++++++++++++
 " always show current position in the statusbar
@@ -173,8 +178,21 @@ set history=700
 " a mouse for all modes
 set mouse=a
 " this is a fast terminal
-set ttyfast
-"
+
+" Handy things to have for coding ++++++++++++++++++++++++++++
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+nnoremap <Leader>f za
+" highlight bad whitespace
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile *.{py,pyw,c,h,sh} match BadWhitespace /\s\+$/
+" ctags for the usual projects
+nnoremap <Leader>T :!ctags -R -o $HOME/.tags/rkpythonscripts $HOME/sdmain;
+            \ ctags -R -o $HOME/.tags/rkpython $HOME/sdmain/src/py <CR>
+set tags+=$HOME/.tags/rkpythonscripts
+set tags+=$HOME/.tags/rkpython
+
 " Run pathogen if it exists in the correct place.
 if filereadable(expand("~/.vim/autoload/pathogen.vim"))
     execute pathogen#infect()
@@ -182,9 +200,3 @@ if filereadable(expand("~/.vim/autoload/pathogen.vim"))
 else
     echomsg "Pathogen not found"
 endif
-
-" ctags for the usual projects
-"
-map <C-M> :!ctags -R -o $HOME/.tags/rkpythonscripts $HOME/sdmain ;ctags -R -o $HOME/.tags/rkpython $HOME/sdmain/src/py <CR>
-set tags+=$HOME/.tags/rkpythonscripts
-set tags+=$HOME/.tags/rkpython

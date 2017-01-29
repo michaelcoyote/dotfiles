@@ -1,10 +1,10 @@
 #!/bin/bash
 ############################
-# DFlink.sh 
-# This script creates symlinks from the home directory 
+# DFlink.sh
+# This script creates symlinks from the home directory
 # to any desired dotfiles in ~/dotfiles
-#  
-#  
+#
+#
 ########## Variables
 dfdir=~/.dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
@@ -28,7 +28,7 @@ for file in $files; do
             echo "~/.$file has more than one name, check for hard links."
         else
             if [ -e ~/."$file" ] # if .file exists, back up
-            then    
+            then
                 mkdir -p "$olddir" # create dotfiles_old in homedir
                 echo "Move ~/.$file to $olddir"
                 mv ~/."$file" "$olddir"
@@ -37,7 +37,7 @@ for file in $files; do
             ln -s "$dfdir"/"$file" ~/."$file"
         fi
     else
-        echo "File $file is missing from $dfdir"  
+        echo "File $file is missing from $dfdir"
     fi
 done
 

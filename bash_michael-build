@@ -1,0 +1,9 @@
+export ARCANIST_PATH=/usr/local/lib/arcanist/arcanist_wrapper
+export ECLIPSE_PATH=/usr/local/lib/eclipse/
+export ZINC_PATH=/usr/local/lib/zinc-0.3.5/bin
+export USR_LOCAL_BIN=/usr/local/bin/
+export BYTEMAN_PATH=/usr/local/lib/byteman-download-3.0.6/bin
+export NODEJS_PATH=/usr/local/lib/node-v4.4.7-linux-x64/bin
+export PATH=$ARCANIST_PATH:$ECLIPSE_PATH:$ZINC_PATH:$BYTEMAN_PATH:\
+$USR_LOCAL_BIN:$NODEJS_PATH:$PATH
+

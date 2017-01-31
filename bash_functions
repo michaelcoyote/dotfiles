@@ -170,3 +170,8 @@ function ipgrep()
 grep -o -E '\b(((2[0-5]|1[0-9])|[0-9])?([0-9]){1,2}\.){3}((2[0-5]|1[0-9])|[0-9])?([0-9])\b'
 } 
 
+# Parse git branch branch for prompt
+parse_git_branch () {
+      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+  }
+

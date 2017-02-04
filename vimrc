@@ -78,13 +78,19 @@ function! EightyColumnBar()
         setlocal colorcolumn=0
     endif
 endfunction
-nnoremap <leader>b :call EightyColumnBar()<cr>
+" toggle red bar at 80 col
+nnoremap <leader>! :call EightyColumnBar()<cr>
 " toggle paste mode
 nnoremap <leader>p :set paste!<cr>
 " quick edit vimrc
-nnoremap <leader>ev :vsplit $HOME/.dotfiles/vimrc<cr>
+nnoremap <leader>ve :vsplit $HOME/.dotfiles/vimrc<cr>
 " quicksource vimrc
-nnoremap <leader>sv :source $HOME/.dotfiles/vimrc<cr>
+nnoremap <leader>vs :source $HOME/.dotfiles/vimrc<cr>
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " set fast terms and mouse modes for local terms
 "if &term =~ 'linux'|'xterm'|'rvxt'
@@ -108,6 +114,23 @@ set joinspaces
 set nostartofline
 " Time spent waiting for a ctrl key/sequence to complete in ms
 set timeoutlen=500
+
+" Vim UI +++++++++++++++++++++++++++++++++++++++++++++++++++++
+" always show current position in the statusbar
+set ruler
+" Height of the command bar
+set cmdheight=2
+" always see status bar
+set laststatus=2
+" No annoying sound or flashing on errors
+set noerrorbells novisualbell
+" unset termcap visual bell 
+set t_vb=
+" I like to keep a lot of Vim history.
+set history=700
+" a mouse for all modes
+set mouse=a
+" this is a fast terminal
 
 " Vim textual color behaviour ++++++++++++++++++++++++++++++++
 " color scheme - I love me some elflord
@@ -164,21 +187,6 @@ au BufRead,BufNewFile *.{py,pyw}
 au BufRead,BufNewFile *.{js,html,cs}
             \ set tabstop=2 softtabstop=2 shiftwidth=2
 
-" Vim UI +++++++++++++++++++++++++++++++++++++++++++++++++++++
-" always show current position in the statusbar
-set ruler
-" Height of the command bar
-set cmdheight=2
-" No annoying sound or flashing on errors
-set noerrorbells novisualbell
-" unset termcap visual bell 
-set t_vb=
-" I like to keep a lot of Vim history.
-set history=700
-" a mouse for all modes
-set mouse=a
-" this is a fast terminal
-
 " Handy things to have for coding ++++++++++++++++++++++++++++
 " Enable folding
 set foldmethod=indent
@@ -196,7 +204,13 @@ set tags+=$HOME/.tags/rkpython
 " Run pathogen if it exists in the correct place.
 if filereadable(expand("~/.vim/autoload/pathogen.vim"))
     execute pathogen#infect()
-    " echomsg "Pathogen enabled"
 else
     echomsg "Pathogen not found"
+endif
+" fugitive
+if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+    cnoremap gb :Gblame
+    cnoremap gl :Glog
+    cnoremap ge :Gedit
+    cnoremap gd :Gdiff
 endif

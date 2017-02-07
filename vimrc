@@ -23,10 +23,10 @@ let g:maplocalleader = "-"
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-" save a file fast.
-nmap <Leader>w :w!<cr>
-" quit a file fast 
-nmap <Leader>q :wq!<cr>
+" save all open buffers fast.
+nmap <leader>w :wa!<cr>
+" save and quit all open buffers fast 
+nmap <leader>Q :wq!<cr>
 
 " ++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 " set up the generic GUI options
@@ -43,6 +43,7 @@ if has('gui_running')
     nmap <leader>ws :set lines=27 columns=88<cr>
     nmap <leader>wm :set lines=40 columns=132<cr>
     nmap <leader>wl :set lines=45 columns=160<cr>
+    nmap <leader>wl :set lines=65 columns=160<cr>
 	" Per OS/GUI options ++++++++++++++++++++++++++
 	" Set up fonts and other items on a GUI by GUI basis...
 	if has('gui_win32')
@@ -60,7 +61,7 @@ endif
 " Useful mapped commands
 "
 " toggle line numbers
-nnoremap <Leader>n :set invnumber<cr>
+nnoremap <leader>N :set invnumber<cr>
 " toggle syntax (when it bogs down vim)
 function! SynToggle()
     if exists("g:syntax_on")
@@ -171,7 +172,7 @@ nnoremap <silent> <Space> :silent noh<Bar>echo<CR>
 " do not create a backup before writing a file
 set nobackup
 " make a backup before overwriting a file
-set writebackup
+" set writebackup
 " Set to auto read when a file is changed from the outside
 set autoread
 " Set up autocommands for various file types

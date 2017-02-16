@@ -24,9 +24,9 @@ let g:maplocalleader = "-"
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " save all open buffers fast.
-nmap <leader>w :wa!<cr>
+nnoremap <leader>w :wa!<cr>
 " save and quit all open buffers fast 
-nmap <leader>Q :wq!<cr>
+nnoremap <leader>Q :wq!<cr>
 
 " ++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 " set up the generic GUI options
@@ -40,10 +40,10 @@ if has('gui_running')
     set t_Co=256
     set guitablabel=%M\ %t
     " useful window resize commands
-    nmap <leader>ws :set lines=27 columns=88<cr>
-    nmap <leader>wm :set lines=40 columns=132<cr>
-    nmap <leader>wl :set lines=45 columns=160<cr>
-    nmap <leader>wl :set lines=65 columns=160<cr>
+    nnoremap <leader>ws :set lines=27 columns=88<cr>
+    nnoremap <leader>wm :set lines=40 columns=132<cr>
+    nnoremap <leader>wl :set lines=45 columns=160<cr>
+    nnoremap <leader>wx :set lines=65 columns=160<cr>
 	" Per OS/GUI options ++++++++++++++++++++++++++
 	" Set up fonts and other items on a GUI by GUI basis...
 	if has('gui_win32')
@@ -143,18 +143,16 @@ filetype on
 filetype plugin on
 filetype indent on
 
-" Vim Spellchecker +++++++++++++++++++++++++++++++++++++++++++
-" turn on spellcheck if version 7 or above
+" turn on version 7 or above features
 if v:version >= 700
+    " Vim Spellchecker +++++++++++++++++++++++++++++++++++++++++++
     " Enable spell check for text files
     autocmd BufNewFile,BufRead *.{txt,md} setlocal spell spelllang=en
     " Pressing ,ss will toggle and untoggle spell checking
-    map <Leader>ss :setlocal spell!<cr>
+    noremap <leader>zz :setlocal spell!<cr>
     " Shortcuts using <leader>
-    map <Leader>sn ]s
-    map <Leader>sp [s
-    map <Leader>sa zg
-    map <Leader>s? z=
+    noremap <leader>zn ]s
+    noremap <leader>zp [s
 endif
 
 " Vim search ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -181,12 +179,13 @@ set autoread
 "  this overrides the typical behavior of highlighting Modula-2
 au BufRead,BufNewFile *.md set filetype=markdown shiftwidth=2 tabstop=2
 " Python and shell
-au BufRead,BufNewFile *.{py,pyw}
+au BufRead,BufNewFile *.{py,pyw,go}
             \ set tabstop=4 softtabstop=4 shiftwidth=4 |
             \ set textwidth=79 expandtab autoindent |
-            \ set fileformat=unix
+            \ set fileformat=unix number
 au BufRead,BufNewFile *.{js,html,cs}
-            \ set tabstop=2 softtabstop=2 shiftwidth=2
+            \ set tabstop=2 softtabstop=2 shiftwidth=2 |
+            \ set number
 
 " Handy things to have for coding ++++++++++++++++++++++++++++
 " Enable folding
@@ -210,8 +209,8 @@ else
 endif
 " fugitive
 if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
-    cnoremap gb :Gblame
-    cnoremap gl :Glog
-    cnoremap ge :Gedit
-    cnoremap gd :Gdiff
+    noremap gb :Gblame
+    noremap gl :Glog
+    noremap ge :Gedit
+    noremap gd :Gdiff
 endif

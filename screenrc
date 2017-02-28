@@ -7,6 +7,8 @@ vbell on
 vbell_msg 'wtf?'
 # detatch session on SIGHUP
 autodetach on
+# set alternate screen for things like editors
+altscreen on
 # message customization
 startup_message off
 pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
@@ -16,15 +18,16 @@ defflow off
 ignorecase on
 # set the number of scrollback lines
 defscrollback 12000
-
+# bash fix
+#windowlist string "%4n %h%=%f"
 # Pretty status bar at the bottom.
 hardstatus alwayslastline
+hardstatus string "%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m/%d %{W}%c %{g}]"
 # Format a status line color formatting is "%{gk}" for example
 # basic format is like this:
 # [Hostname][ 0-@ active-win 1 bg-win (3* curr-win) ][mm/dd HH:mm]
-hardstatus string "%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m/%d %{W}%c %{g}]"
 # A breakdown of the status line via:
-# ttps://www.gnu.org/software/screen/manual/screen.html#String-Escapes
+# https://www.gnu.org/software/screen/manual/screen.html#String-Escapes
 # %{{gk} [ %{G} %H %{g}} ]  : Print the hostname in bright green inside green brackets
 # [ %=                      : Expand to fill all space
 # white on key then print lower numbered windows than current window if any
@@ -33,7 +36,7 @@ hardstatus string "%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?
 # %{r} (%[W] %n *%f %t %?(%u)%?%{r})
 # white on key then print higher numbered windows than current window if any
 # %{w}%?%+Lw%?%?%=
-# Print month/day in blue and 24-hi in white time inside green brackets
+# Print month/day in blue and 24-h clock in white time inside green brackets
 # %{g}][%{B} %m/%d %{W}%c %{g}]
 
 # No screen 0
@@ -44,8 +47,8 @@ screen 1
 
 # use 256 color if avalible
 term screen-256color
-
-#termcapinfo xterm ti@:te@
+# Mouse scrolling acts like up/down arrow
+termcapinfo xterm ti@:te@
 #
 # change the escape key from a to o
 escape ^Oo

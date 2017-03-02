@@ -1,14 +1,13 @@
 " vimrc for most things
+" Disclaimer
 " mostly targets 7.0 or later and is not vi compatable
 " This may not work for you. I like weird fonts
 " have an a taste for obscure options and try odd things
 " I also work on a lot of different platforms
 " No warranty is implied, use at your own risk.
 
-
 " see, I told you..  
 set nocompatible
-
 " turn off the splash screen
 set shortmess+=I
 
@@ -21,45 +20,7 @@ let g:mapleader = ","
 let maplocalleader = "-"
 let g:maplocalleader = "-"
 
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-" save all open buffers fast.
-nnoremap <leader>w :wa!<cr>
-" save and quit all open buffers fast 
-nnoremap <leader>Q :wq!<cr>
-
-" ++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-" set up the generic GUI options
-if has('gui_running')
-	" set up a decent default size 
-	set lines=27 columns=88
-    " remove tearoffs
-    set guioptions-=T
-    " add tab pages
-    set guioptions+=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-    " useful window resize commands
-    nnoremap <leader>ws :set lines=27 columns=88<cr>
-    nnoremap <leader>wm :set lines=40 columns=132<cr>
-    nnoremap <leader>wl :set lines=45 columns=160<cr>
-    nnoremap <leader>wx :set lines=65 columns=160<cr>
-	" Per OS/GUI options ++++++++++++++++++++++++++
-	" Set up fonts and other items on a GUI by GUI basis...
-	if has('gui_win32')
-		" I like the "peep" font - http://zevv.nl/play/code/zevv-peep/
-		set guifont=peep:h11,Consolas:h11
-	endif
-	if has('gui_macvim')
-        echo "looks like we're using macvim"
-		" Monaco 10 pt looks good, 
-		set guifont=Monaco:h10
-	endif
-
-endif
-
-" Useful mapped commands
-"
+" +++ Useful mapped commands +++
 " toggle line numbers
 nnoremap <leader>N :set invnumber<cr>
 " toggle syntax (when it bogs down vim)
@@ -87,36 +48,37 @@ nnoremap <leader>p :set paste!<cr>
 nnoremap <leader>ve :vsplit $HOME/.dotfiles/vimrc<cr>
 " quicksource vimrc
 nnoremap <leader>vs :source $HOME/.dotfiles/vimrc<cr>
-"split navigations
+" split navigation with ctl-HJKL
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-" set fast terms and mouse modes for local terms
-"if &term =~ 'linux'|'xterm'|'rvxt'
-"	set ttyfast
-"	set mouse=a
-"endif
+" Remove the Windows ^M - when the encodings gets messed up
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+" save all open buffers fast.
+nnoremap <leader>w :wa!<cr>
+" save and quit all open buffers fast 
+nnoremap <leader>Q :wq!<cr>
 
 " Vim key behaviour +++++++++++++++++++++++++++++++++++++++++++  
-" Use spaces instead of tabs
-set expandtab
-" does the right thing on tabs and backspaces
-set smarttab
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
-" set some sane backspace behavior
-set backspace=indent,eol,start
+" Time spent waiting for a ctrl key/sequence to complete in ms
+set timeoutlen=500
 " Set 2 spaces after punctuation w/ a join line command
 set joinspaces
 " do not move cursor to 1st non blank of line on command
 set nostartofline
-" Time spent waiting for a ctrl key/sequence to complete in ms
-set timeoutlen=500
+" set some sane backspace behavior
+set backspace=indent,eol,start
+" does the right thing on tabs and backspaces
+set smarttab
+" Use spaces instead of tabs
+set expandtab
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
 
 " Vim UI +++++++++++++++++++++++++++++++++++++++++++++++++++++
+" +++ Set up UI options +++
 " always show current position in the statusbar
 set ruler
 " Height of the command bar
@@ -132,6 +94,48 @@ set history=700
 " a mouse for all modes
 set mouse=a
 " this is a fast terminal
+set ttyfast
+" +++ Set up GUI options +++
+if has('gui_running')
+	" set up a decent default size 
+	set lines=40 columns=132
+    " remove tearoffs
+    set guioptions-=T
+    " add tab pages
+    set guioptions+=e
+    set t_Co=256
+    set guitablabel=%M\ %t
+    " enable mouse searching
+    set mousemodel=extend
+    " useful window resize commands
+    nnoremap <leader>ws :set lines=27 columns=88<cr>
+    nnoremap <leader>wm :set lines=40 columns=132<cr>
+    nnoremap <leader>wl :set lines=45 columns=160<cr>
+    nnoremap <leader>wx :set lines=65 columns=160<cr>
+	" Per OS/GUI options ++++++++++++++++++++++++++
+	" Set up fonts and other items on a GUI by GUI basis...
+	if has('gui_win32')
+		" I like the "peep" font - http://zevv.nl/play/code/zevv-peep/
+		set guifont=peep:h11,Consolas:h11
+	endif
+	if has('gui_macvim')
+        echo "looks like we're using macvim"
+		" Monaco 10 pt looks good, 
+		set guifont=Monaco:h10
+	endif
+endif
+
+" +++ Turn on version 7 or above features +++
+if v:version >= 700
+    " Vim Spellchecker
+    " Enable spell check for text files
+    autocmd BufNewFile,BufRead *.{txt,md} setlocal spell spelllang=en
+    " Pressing ,zz will toggle and untoggle spell checking
+    noremap <leader>zz :setlocal spell!<cr>
+    " Shortcuts using <leader>
+    noremap <leader>zn ]s
+    noremap <leader>zp [s
+endif
 
 " Vim textual color behaviour ++++++++++++++++++++++++++++++++
 " color scheme - I love me some elflord
@@ -142,18 +146,6 @@ syntax enable
 filetype on
 filetype plugin on
 filetype indent on
-
-" turn on version 7 or above features
-if v:version >= 700
-    " Vim Spellchecker +++++++++++++++++++++++++++++++++++++++++++
-    " Enable spell check for text files
-    autocmd BufNewFile,BufRead *.{txt,md} setlocal spell spelllang=en
-    " Pressing ,ss will toggle and untoggle spell checking
-    noremap <leader>zz :setlocal spell!<cr>
-    " Shortcuts using <leader>
-    noremap <leader>zn ]s
-    noremap <leader>zp [s
-endif
 
 " Vim search ++++++++++++++++++++++++++++++++++++++++++++++++++
 " do useful search things

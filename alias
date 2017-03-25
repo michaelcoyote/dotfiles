@@ -5,8 +5,7 @@
 
 # alias changing to commonly used directories
 alias work='cd ~/working/'
-alias dot='cd ~/.dotfiles/'
-alias sdot='cd ~/.sdotfiles/'
-alias site='cd ~/Documents/work/site_notes/'
-alias doc='cd ~/Documents/'
-alias dnl='cd ~/Downloads/'
+alias cdsn='cd ~/Documents/work/site_notes/'
+
+# Default dirs output more useful
+alias dirs="dirs -v"

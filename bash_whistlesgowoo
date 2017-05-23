@@ -1,0 +1,8 @@
+#
+#
+# Reset the colo route for my osx laptop
+function rstcroute() 
+{
+    /usr/bin/sudo /sbin/route -n delete -net 10.0.0.0/16 192.168.132.132
+    /usr/bin/sudo /sbin/route -n add -net 10.0.0.0/16 192.168.132.132
+}

@@ -10,10 +10,10 @@
 # - year - month - day format in the index window
 # - updates to save_hooks
 #
-# make colors dependant on the term
-source "~/.mutt/$TERM
+# assume 256 color term 
+source "~/.mutt/256color"
 # my maiboxes file
-source "~/.mutt/muttrc.mailboxes
+source "~/.mutt/muttrc.mailboxes"
 ### pgp stuff ...
 #set pgp_default_version=pgp5
 # set pgp_autosign

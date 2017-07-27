@@ -1,13 +1,11 @@
 " vimrc for most things
 " Disclaimer
-" mostly targets 7.0 or later and is not vi compatable
+" targets 7.0 or later and is not vi compatable
 " This may not work for you. I like weird fonts
 " have an a taste for obscure options and try odd things
 " I also work on a lot of different platforms
 " No warranty is implied, use at your own risk.
 
-" see, I told you..  
-set nocompatible
 " turn off the splash screen
 set shortmess+=I
 
@@ -15,17 +13,17 @@ set shortmess+=I
 " Set up the leader and localleader here in case I want it below
 " With a leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
-let maplocalleader = "-"
-let g:maplocalleader = "-"
+let mapleader = ','
+let g:mapleader = ','
+let maplocalleader = '-'
+let g:maplocalleader = '-'
 
 " +++ Useful mapped commands +++
 " toggle line numbers
 nnoremap <leader>N :set invnumber<cr>
 " toggle syntax (when it bogs down vim)
 function! SynToggle()
-    if exists("g:syntax_on")
+    if exists('g:syntax_on')
         syntax off
     else
         syntax enable
@@ -194,13 +192,13 @@ set tags+=$HOME/.tags/rkpythonscripts
 set tags+=$HOME/.tags/rkpython
 
 " Run pathogen if it exists in the correct place.
-if filereadable(expand("~/.vim/autoload/pathogen.vim"))
+if filereadable(expand('~/.vim/autoload/pathogen.vim'))
     execute pathogen#infect()
 else
-    echomsg "Pathogen not found"
+    echomsg 'Pathogen not found'
 endif
 " fugitive
-if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+if isdirectory(expand('~/.vim/bundle/vim-fugitive/'))
     noremap gb :Gblame
     noremap gl :Glog
     noremap ge :Gedit

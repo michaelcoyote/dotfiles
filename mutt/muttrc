@@ -13,15 +13,13 @@
 # assume 256 color term 
 source "~/.mutt/256color"
 # my maiboxes file
-source "~/.mutt/muttrc.mailboxes"
-### pgp stuff ...
-#set pgp_default_version=pgp5
-# set pgp_autosign
-# Note: $folder should be set _before_ any other path vars where `+' or `='
-# is used because paths are expanded when parsed
-set folder=~/Maildir/	# where i keep my mailboxes
-#set folder="{core.ele-mental.org}"
-#set spoolfile="{core.ele-mental.org}INBOX"
+source "~/.mutt/muttrc.mailboxes
+# Note: folder should be set _before_ any other path vars where `+' or `='
+#       is used because paths are expanded when parsed
+set folder=~/Mail/	# where i keep my mailboxes
+# set folder="{core.ele-mental.org}"
+# set spoolfile="{core.ele-mental.org}INBOX"
+
 # Magic (mailbox type):
 # allowed values: mbox, MMDF, MH, Maildir
 set mbox_type=Maildir
@@ -79,8 +77,6 @@ set signature="~/.mutt/signature"	# file which contains my signature
 # groups messages on the same subject to make it easier to follow a
 # discussion.  Mutt will draw a nice tree showing how the discussion flows.
 set sort=threads		# primary sorting method
-#set sort_aux=reverse-date-received	# how to sort subthreads
-#set sort_aux=last-date		# date of the last message in thread
 set sort_browser=reverse-date	# how to sort files in the dir browser
 #set mask="."			# Show these files in the file browser
 # set mask="!^\\.[^.]"		# Default
@@ -93,23 +89,16 @@ set tmpdir=~/tmp		# where to store temp files
 set nouse_domain		# don't qualify local addresses with $domain
 set visual=vim			# editor invoked by ~v in the builtin editor
 set write_inc=25		# show progress while writing mailboxes
-
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#
 # Header fields I don't normally want to see
-#
-#ignore *		# this means "ignore all lines by default"
-
+# ignore *		# this means "ignore all lines by default"
 # I do want to see these fields, though!
 #unignore	from: subject to cc mail-followup-to \
 #		date x-mailer x-url # this shows how nicely wrap long lines
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # ispell stuff
-
 bind compose \cxi ispell
 macro compose i ":set ispell=ispell\n\cxi"
-
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
 # Key bindings
@@ -120,7 +109,7 @@ macro compose i ":set ispell=ispell\n\cxi"
 #		browser		directory browser
 #		compose		compose menu
 #		index		message index
-#		pgp		pgp menu
+#		pgp		    pgp menu
 #		postpone	postponed message recall menu
 #		generic		generic keymap for all of the above
 #		editor		line editor
@@ -236,7 +225,7 @@ folder-hook =personal/dad 'my_hdr From: Michael <michael@guldan.net>'
 #
 # shell out and create a list of mailboxes
  mailboxes ! + `\
-    for file in ~/Maildir/.*; do \
+    for file in ~/Mail/.*; do \
 	box=$(basename "$file"); \
 	if [ ! "$box" = '.' -a ! "$box" = '..' -a ! "$box" = '.customflags' \
 		-a ! "$box" = '.subscriptions' ]; then \
@@ -247,7 +236,7 @@ folder-hook =personal/dad 'my_hdr From: Michael <michael@guldan.net>'
 #all aliases should really be in my aliases file
 source ~/.mutt/aliases
 # alternate mail addresses
-alternates (michael@akibako.net|(michael|michaelg)@guldan.net|michael@ele-mental.org|michaelguldan@gmail.com)
+alternates (michael@guldan.net|michael@ele-mental.org|michaelguldan@gmail.com)
 #
 # Identify mailing lists I subscribe to
 #

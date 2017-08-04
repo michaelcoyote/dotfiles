@@ -16,6 +16,7 @@
   ol = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
   type = cat-file -t
   dump = cat-file -p
+	root = rev-parse --show-toplevel
 
 [push]
 	default = matching

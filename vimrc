@@ -108,8 +108,9 @@ if has('gui_running')
     " useful window resize commands
     nnoremap <leader>ws :set lines=27 columns=88<cr>
     nnoremap <leader>wm :set lines=40 columns=132<cr>
-    nnoremap <leader>wl :set lines=45 columns=160<cr>
-    nnoremap <leader>wx :set lines=65 columns=160<cr>
+    nnoremap <leader>wl :set lines=45 columns=164<cr>
+    nnoremap <leader>wx :set lines=65 columns=164<cr>
+    nnoremap <leader>ww :set lines=75 columns=246<cr>
 	" Per OS/GUI options ++++++++++++++++++++++++++
 	" Set up fonts and other items on a GUI by GUI basis...
 	if has('gui_win32')
@@ -153,7 +154,8 @@ if has('extra_search')
 endif
 " Use case insensitive search, except when using capital letters
 set ignorecase smartcase
-" Press space to clear search highlighting and any message already displayed.
+" Press space to clear search highlighting and any message
+" already displayed.
 nnoremap <silent> <Space> :silent noh<Bar>echo<CR>
 
 " Vim file handling +++++++++++++++++++++++++++++++++++++++++
@@ -169,7 +171,7 @@ set autoread
 "  this overrides the typical behavior of highlighting Modula-2
 au BufRead,BufNewFile *.md set filetype=markdown shiftwidth=2 tabstop=2
 " Python and shell
-au BufRead,BufNewFile *.{py,pyw,go}
+au BufRead,BufNewFile *.{py,pyw,sh,bash}
             \ set tabstop=4 softtabstop=4 shiftwidth=4 |
             \ set textwidth=79 expandtab autoindent |
             \ set fileformat=unix number
@@ -177,7 +179,7 @@ au BufRead,BufNewFile *.{js,html,cs}
             \ set tabstop=2 softtabstop=2 shiftwidth=2 |
             \ set number
 
-" Handy things to have for coding ++++++++++++++++++++++++++++
+" Handy things to have for coding & etc. +++++++++++++++++++++
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
@@ -190,6 +192,10 @@ nnoremap <Leader>T :!ctags -R -o $HOME/.tags/rkpythonscripts $HOME/sdmain;
             \ ctags -R -o $HOME/.tags/rkpython $HOME/sdmain/src/py <CR>
 set tags+=$HOME/.tags/rkpythonscripts
 set tags+=$HOME/.tags/rkpython
+" insert a datestamp
+nnoremap <leader>ts :put = strftime('%FT%T%z')<cr>
+nnoremap <leader>ds :put = strftime('%F')<cr>
+
 
 " Run pathogen if it exists in the correct place.
 if filereadable(expand('~/.vim/autoload/pathogen.vim'))

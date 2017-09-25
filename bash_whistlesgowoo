@@ -6,3 +6,5 @@ function rstcroute()
     /usr/bin/sudo /sbin/route -n delete -net 10.0.0.0/16 192.168.132.132
     /usr/bin/sudo /sbin/route -n add -net 10.0.0.0/16 192.168.132.132
 }
+
+export PATH="$HOME/bin/arc/arcanist/bin:$PATH"

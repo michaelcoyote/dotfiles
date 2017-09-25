@@ -54,8 +54,8 @@ shopt -s cmdhist        # save multiline cmds in same history entry
 shopt -s no_empty_cmd_completion  # no tab completion for empty prompt
 shopt -s histappend histreedit histverify 
 shopt -s extglob        # extended pattern matching & programmable completion
-# bash version gt 4
-if [ "$BASH_VERSINFO -gt 3" ]; 
+# bash version greater than or equal to 4
+if [ "${BASH_VERSINFO[0]}" -ge 4 ]; 
   then 
     shopt -s checkjobs      # check for running jobs before exit
 fi

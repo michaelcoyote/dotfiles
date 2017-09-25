@@ -26,3 +26,15 @@ Host tc
     User michaelcoyote
     #LocalForward 119 127.0.0.1:119
 
+Host rarchive
+    Hostname 174.129.171.128
+    User ubuntu
+    IdentityFile ~/graphite.pem
+
+Host st
+    Hostname supporttunnel.corp.rubrik.com
+    User michael.guldan
+
+Host stcolo
+    Hostname supporttunnel.colo.rubrik.com
+    User michael.guldan

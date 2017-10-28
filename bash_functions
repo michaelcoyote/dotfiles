@@ -191,9 +191,8 @@ function xtitle()
 # really basic grep function to find IP/netmask octets.
 function ipgrep()
 {
-# find any pattern from "0.0.0.0" to "259.259.259.259"
-# TODO fix this so it checks for legal octets (255.255.255.255) (Note: may be some time)
-grep -o -E '\b(((2[0-5]|1[0-9])|[0-9])?([0-9]){1,2}\.){3}((2[0-5]|1[0-9])|[0-9])?([0-9])\b'
+# find any pattern from "0.0.0.0" to "255.255.255.255"
+grep -o -E '\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b'
 } 
 
 # Parse git branch branch for prompt

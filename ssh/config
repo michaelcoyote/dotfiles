@@ -8,6 +8,10 @@ Host *
     ServerAliveCountMax 30
     UseRoaming no 
 
+# allow cached keys in Mac High Sierra
+Host *
+   AddKeysToAgent yes
+   UseKeychain yes
 #  The usual suspects
 
 Host core
@@ -40,5 +44,6 @@ Host stcolo
     User michael.guldan
 
 Host build-colo
-    Hostname 10.0.7.64
+    #Hostname 10.0.7.64
+    Hostname michael-colo-dev.rubrik-lab.com
     User michael

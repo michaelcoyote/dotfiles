@@ -118,30 +118,6 @@ function parse_yaml {
 }
 
 
-# TODO clean this up to just print if:addr pairs.
-function ip() {
-    ifconfig -a | awk 'BEGIN {RS="";FS="\n"} 
-        {split($1,iface," "); 
-            gsub(/^[ /t]+inet/,"",$2); 
-            if ($2 ~ /addr/) print iface[1]":"$2
-        }'
-} 
-
-function hii()   # Get current host related info.
-{
-    echo -e "\nYou are logged on $HOST"
-    echo -e "\nAdditionnal information:$NC " ; uname -a
-    echo -e "\nUsers logged on:$NC " ; w -h |
-             cut -d " " -f1 | sort | uniq
-    echo -e "\nCurrent date :$NC " ; date
-    echo -e "\nMachine stats :$NC " ; uptime
-    echo -e "\nMemory stats :$NC " ; free
-    echo -e "\nDiskspace :$NC " ; mydf / "$HOME"
-    echo -e "\nLocal IP Addresses :$NC" ; ip
-    echo -e "\nOpen connections :$NC "; netstat -pan --inet;
-    echo
-}
-
 #-------------------------------------------------------------
 # Misc utilities:
 #-------------------------------------------------------------
@@ -152,15 +128,6 @@ function repeat()       # Repeat n times command.
     for ((i=1; i <= max ; i++)); do  # --> C-like syntax
         eval "$@";
     done
-}
-
-function ask()          # See 'killps' for example of use.
-{
-    echo -n "$@" '[y/n] ' ; read ans
-    case "$ans" in
-        y*|Y*) return 0 ;;
-        *) return 1 ;;
-    esac
 }
 
 function corename()   # Get name of app that created a corefile.
@@ -202,3 +169,6 @@ parse_git_branch () {
 
 # Remove eXtra Spaces
 function rxs() { sed 's/ \{1,\}/ /g'; }
+
+# datetime stamp (works on bsd/linux/mac)
+function dtstamp { date "+%Y-%m-%d"; }

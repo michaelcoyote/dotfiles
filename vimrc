@@ -96,7 +96,7 @@ set ttyfast
 " +++ Set up GUI options +++
 if has('gui_running')
 	" set up a decent default size 
-	set lines=40 columns=132
+	set lines=65 columns=164
     " remove tearoffs
     set guioptions-=T
     " add tab pages
@@ -110,7 +110,7 @@ if has('gui_running')
     nnoremap <leader>wm :set lines=40 columns=132<cr>
     nnoremap <leader>wl :set lines=45 columns=164<cr>
     nnoremap <leader>wx :set lines=65 columns=164<cr>
-    nnoremap <leader>ww :set lines=75 columns=246<cr>
+    nnoremap <leader>ww :set lines=75 columns=320<cr>
 	" Per OS/GUI options ++++++++++++++++++++++++++
 	" Set up fonts and other items on a GUI by GUI basis...
 	if has('gui_win32')
@@ -178,6 +178,9 @@ au BufRead,BufNewFile *.{py,pyw,sh,bash}
 au BufRead,BufNewFile *.{js,html,cs}
             \ set tabstop=2 softtabstop=2 shiftwidth=2 |
             \ set number
+" workaround to get todo working 
+au BufNewFile,BufRead $HOME/Dropbox/todo/todo.txt set filetype=todo
+au BufRead,BufNewFile todo.txt set filetype=todo
 
 " Handy things to have for coding & etc. +++++++++++++++++++++
 " Enable folding

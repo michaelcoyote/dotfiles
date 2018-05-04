@@ -8,3 +8,20 @@ function rstcroute()
 }
 
 export PATH="$HOME/bin/arc/arcanist/bin:$PATH"
+
+
+listtunnels() {
+  ssh st -t /opt/rubrik/src/scripts/infra/tunnel/tunnel.py list
+}
+
+tunnel() {
+  ssh st -t /opt/rubrik/src/scripts/infra/tunnel/tunnel.py connect $1 $2
+}
+
+portforward() {
+  ssh -L$3:localhost:$3 st -t /opt/rubrik/src/scripts/infra/tunnel/tunnel.py forward $1 $2 --local_port $3 --node_port $4
+}
+
+alias lt=listtunnels
+alias st=tunnel
+alias pf=portforward

@@ -9,7 +9,8 @@
 dfdir=~/.dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="bashrc vimrc gitconfig wgetrc screenrc XCompose ssh/config bash_functions config/htop/htoprc config/parcellite/parcelliterc alias psqlrc ctags tmux.conf"
+files="bashrc vimrc gitconfig wgetrc screenrc XCompose ssh/config bash_profile
+bash_functions config/htop/htoprc config/parcellite/parcelliterc alias psqlrc ctags tmux.conf bash_${HOSTNAME}"
 ##########
 
 # do all the work from the dotfiles dir

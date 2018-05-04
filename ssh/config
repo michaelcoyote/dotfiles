@@ -12,19 +12,8 @@ Host *
 Host *
    AddKeysToAgent yes
    UseKeychain yes
+
 #  The usual suspects
-
-Host core
-    HostName core.ele-mental.org
-    User michael
-    ForwardAgent yes
-    ForwardX11 yes
-    ForwardX11Trusted yes
-
-Host warp
-    HostName warp.akibako.net
-    User michael
-
 Host tc
     HostName tilde.club
     User michaelcoyote
@@ -33,7 +22,7 @@ Host tc
 Host rarchive
     Hostname 174.129.171.128
     User ubuntu
-    IdentityFile ~/graphite.pem
+    IdentityFile ~/.ssh/graphite.pem
 
 Host st
     Hostname supporttunnel.corp.rubrik.com

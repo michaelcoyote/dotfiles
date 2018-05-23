@@ -78,6 +78,7 @@ test -e ~/.bash_functions && . ~/.bash_functions
 test -e ~/.bashs && . ~/.bashs
 # bring in any locals last so they override
 test -e ~/.bash_"${HOSTNAME}" && . ~/.bash_"${HOSTNAME}"
+test -e ~/.bash_supporttunnel && . ~/.bash_supporttunnel
 test -e ~/.bash_local && . ~/.bash_local
 
 RED="\[\033[0;31m\]"

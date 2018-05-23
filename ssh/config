@@ -10,6 +10,7 @@ Host *
 
 # allow cached keys in Mac High Sierra
 Host *
+   IgnoreUnknown UseKeychain,AddKeysToAgent
    AddKeysToAgent yes
    UseKeychain yes
 

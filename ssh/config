@@ -29,11 +29,14 @@ Host st
     Hostname supporttunnel.corp.rubrik.com
     User michael.guldan
 
-Host stcolo
+Host st2
+    Hostname supporttunnel02.hq.rubrik.com
+    User michael.guldan
+
+Host stc
     Hostname supporttunnel.colo.rubrik.com
     User michael.guldan
 
 Host build-colo
-    #Hostname 10.0.7.64
     Hostname michael-colo-dev.rubrik-lab.com
     User michael

@@ -177,6 +177,10 @@ au BufRead,BufNewFile *.{py,pyw,sh,bash}
             \ set fileformat=unix number
 au BufRead,BufNewFile *.{js,html,cs}
             \ set tabstop=2 softtabstop=2 shiftwidth=2 |
+            \ set textwidth=79 autoindent number
+au BufNewFile,BufRead *.go
+            \ set tabstop=4 shiftwidth=4 softtabstop=4 |
+            \ set textwidth=79 noexpandtab autoindent |
             \ set number
 " workaround to get todo working 
 au BufNewFile,BufRead $HOME/Dropbox/todo/todo.txt set filetype=todo
@@ -212,4 +216,6 @@ if isdirectory(expand('~/.vim/bundle/vim-fugitive/'))
     noremap gl :Glog
     noremap ge :Gedit
     noremap gd :Gdiff
+    noremap gw :Gwrite
+    noremap gc :Gcommit
 endif

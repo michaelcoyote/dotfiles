@@ -25,3 +25,11 @@ portforward() {
 alias lt=listtunnels
 alias st=tunnel
 alias pf=portforward
+
+function udw() {
+  for h in st stc st2 build-colo;
+    do echo 'updating host dotfiles for: '"$h";
+    ssh "$h" cd .dotfiles\; git pull;
+  done
+}
+# for h in st stc st2 build-colo; do ssh $h cd .dotfiles\; git pull ; done

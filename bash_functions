@@ -171,4 +171,6 @@ parse_git_branch () {
 function rxs() { sed 's/ \{1,\}/ /g'; }
 
 # datetime stamp (works on bsd/linux/mac)
-function dtstamp { date "+%Y-%m-%d"; }
+function dstamp { date "+%Y-%m-%d"; }
+function dtstamp { date -u +"%Y-%m-%dT%H:%M:%SZ"; }
+function dtlstamp { date "+%Y-%m-%dT%H:%M:%S%z"; }

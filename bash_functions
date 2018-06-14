@@ -31,53 +31,7 @@ function swapname()
 # Process/system related functions:
 #-------------------------------------------------------------
 
-
-function myps() { ps "$@" -u "$USER" -o pid,%cpu,%mem,bsdtime,command ; }
-function pp() { myps f | awk '!/awk/ && $0~var' var=${1:-".*"} ; }
-
-
-function killps()   # kill by process name
-{
-    local pid pname sig="-TERM"   # default signal
-    if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then
-        echo "Usage: killps [-SIGNAL] pattern"
-        return;
-    fi
-    if [ $# = 2 ]; then sig=$1 ; fi
-    for pid in $(myps| awk '!/awk/ && $0~pat { print $1 }' pat=${!#} )
-    do
-        pname=$(myps | awk '$1~var { print $5 }' var=$pid )
-        if ask "Kill process $pid <$pname> with signal $sig?"
-            then kill "$sig" "$pid"
-        fi
-    done
-}
-
-function mydf()         # Pretty-print of 'df' output.
-{                       # Inspired by 'dfc' utility.
-    for fs ; do
-
-        if [ ! -d $fs ]
-        then
-          echo -e $fs" :No such file or directory" ; continue
-        fi
-
-        local info=( $(command df -P $fs | awk 'END{ print $2,$3,$5 }') )
-        local free=( $(command df -Pkh $fs | awk 'END{ print $4 }') )
-        local nbstars=$(( 20 * ${info[1]} / ${info[0]} ))
-        local out="["
-        for ((j=0;j<20;j++)); do
-            if [ ${j} -lt ${nbstars} ]; then
-               out=$out"*"
-            else
-               out=$out"-"
-            fi
-        done
-        out="${info[2]} $out] ($free free on $fs)"
-        echo -e "$out"
-    done
-}
-
+# list interfaces on a system
 function iflist() {
   ifconfig -a | awk '/^[^[[:space:]]/ { split($0,iface,"  ");
          print iface[1]
@@ -143,7 +97,6 @@ mac2ipv6 () {
     ipv6_address="fe80::$(printf %02x $((0x$1 ^ 2)))$2:${3}ff:fe$4:$5$6"
     echo "$ipv6_address"
 }
-
 
 # change xterm frame title 
 function xtitle()

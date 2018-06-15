@@ -12,6 +12,9 @@
 #    esac
 #fi
 
+# Setup a local tmp if none exists
+[[ -d "${HOME}"/tmp ]] || mkdir "${HOME}"/tmp
+
 # set up vim as the editor of choice
 if test -x "$(which vim)" ; then
     EDITOR="$(which vim)";

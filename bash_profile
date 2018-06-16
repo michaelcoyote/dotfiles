@@ -13,5 +13,5 @@ if uname -a |grep --quiet Darwin ; then
 fi
 # source bashrc
 if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
-# pick up PATH here
+# pick up PATH here~
 export PATH=/usr/local/lib:/usr/local/bin:$PATH

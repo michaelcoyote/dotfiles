@@ -5,7 +5,10 @@
 
 #------------------------------------------------------
 # File manipulation and managment functions.
-#
+
+# mkcd makes a dir and cds in
+mkcd () { mkdir -p "$@" && cd "$@" || exit; }
+
 # Find a file with a pattern in name:
 function ff() { find . -type f -iname '*'"$*"'*' -ls ; }
 
@@ -31,7 +34,53 @@ function swapname()
 # Process/system related functions:
 #-------------------------------------------------------------
 
-# list interfaces on a system
+
+function myps() { ps "$@" -u "$USER" -o pid,%cpu,%mem,bsdtime,command ; }
+function pp() { myps f | awk '!/awk/ && $0~var' var=$"{1:-".*"}" ; }
+
+
+function killps()   # kill by process name
+{
+    local pid pname sig="-TERM"   # default signal
+    if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then
+        echo "Usage: killps [-SIGNAL] pattern"
+        return;
+    fi
+    if [ $# = 2 ]; then sig=$1 ; fi
+    for pid in $(myps| awk '!/awk/ && $0~pat { print $1 }' pat=$"{!#}" )
+    do
+        pname=$(myps | awk '$1~var { print $5 }' var=$"pid" )
+        if ask "Kill process $pid <$pname> with signal $sig?"
+            then kill "$sig" "$pid"
+        fi
+    done
+}
+
+function mydf()         # Pretty-print of 'df' output.
+{                       # Inspired by 'dfc' utility.
+    for fs ; do
+
+        if [ ! -d $"fs" ]
+        then
+          echo -e $"fs" " :No such file or directory" ; continue
+        fi
+
+        local info=( $(command df -P $"fs" | awk 'END{ print $2,$3,$5 }') )
+        local free=( $(command df -Pkh $"fs" | awk 'END{ print $4 }') )
+        local nbstars=$(( 20 * $info[1] / $info[0] ))
+        local out="["
+        for ((j=0;j<20;j++)); do
+            if [ ${j} -lt ${nbstars} ]; then
+               out=$out"*"
+            else
+               out=$out"-"
+            fi
+        done
+        out="${info[2]} $out] ($free free on $fs)"
+        echo -e "$out"
+    done
+}
+
 function iflist() {
   ifconfig -a | awk '/^[^[[:space:]]/ { split($0,iface,"  ");
          print iface[1]
@@ -72,6 +121,30 @@ function parse_yaml {
 }
 
 
+# TODO clean this up to just print if:addr pairs.
+function ip() {
+    ifconfig -a | awk 'BEGIN {RS="";FS="\n"} 
+        {split($1,iface," "); 
+            gsub(/^[ /t]+inet/,"",$2); 
+            if ($2 ~ /addr/) print iface[1]":"$2
+        }'
+} 
+
+function hii()   # Get current host related info.
+{
+    echo -e "\nYou are logged on $HOST"
+    echo -e "\nAdditionnal information:$NC " ; uname -a
+    echo -e "\nUsers logged on:$NC " ; w -h |
+             cut -d " " -f1 | sort | uniq
+    echo -e "\nCurrent date :$NC " ; date
+    echo -e "\nMachine stats :$NC " ; uptime
+    echo -e "\nMemory stats :$NC " ; free
+    echo -e "\nDiskspace :$NC " ; mydf / "$HOME"
+    echo -e "\nLocal IP Addresses :$NC" ; ip
+    echo -e "\nOpen connections :$NC "; netstat -pan --inet;
+    echo
+}
+
 #-------------------------------------------------------------
 # Misc utilities:
 #-------------------------------------------------------------
@@ -84,10 +157,19 @@ function repeat()       # Repeat n times command.
     done
 }
 
+function ask()          # See 'killps' for example of use.
+{
+    echo -n "$@" '[y/n] ' ; read -r ans
+    case "$ans" in
+        y*|Y*) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
 function corename()   # Get name of app that created a corefile.
 {
     for file ; do
-        echo -n $file : ; gdb --core=$file --batch | head -1
+        echo -n $"file" : ; gdb --core=$"file" --batch | head -1
     done
 }
 
@@ -97,6 +179,9 @@ mac2ipv6 () {
     ipv6_address="fe80::$(printf %02x $((0x$1 ^ 2)))$2:${3}ff:fe$4:$5$6"
     echo "$ipv6_address"
 }
+
+# 2 place calculator with bc
+calc(){ echo "scale=2;$*" | bc;}
 
 # change xterm frame title 
 function xtitle()
@@ -124,6 +209,4 @@ parse_git_branch () {
 function rxs() { sed 's/ \{1,\}/ /g'; }
 
 # datetime stamp (works on bsd/linux/mac)
-function dstamp { date "+%Y-%m-%d"; }
-function dtstamp { date -u +"%Y-%m-%dT%H:%M:%SZ"; }
-function dtlstamp { date "+%Y-%m-%dT%H:%M:%S%z"; }
+function dtstamp { date "+%Y-%m-%d"; }

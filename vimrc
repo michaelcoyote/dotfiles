@@ -111,6 +111,8 @@ if has('gui_running')
     nnoremap <leader>wl :set lines=45 columns=164<cr>
     nnoremap <leader>wx :set lines=65 columns=164<cr>
     nnoremap <leader>ww :set lines=75 columns=320<cr>
+    " support larged fenced codeblocks in markdown
+    let g:markdown_minlines = 400
 	" Per OS/GUI options ++++++++++++++++++++++++++
 	" Set up fonts and other items on a GUI by GUI basis...
 	if has('gui_win32')
@@ -119,8 +121,8 @@ if has('gui_running')
 	endif
 	if has('gui_macvim')
         echo "looks like we're using macvim"
-		" Monaco 10 pt looks good, 
-		set guifont=Monaco:h10
+		" Monaco 10 pt looks good, if I don't have Hack 11p 
+		set guifont=Hack:h12,Monaco:h10
 	endif
 endif
 
@@ -186,6 +188,8 @@ au BufNewFile,BufRead *.go
 au BufNewFile,BufRead $HOME/Dropbox/todo/todo.txt set filetype=todo
 au BufRead,BufNewFile todo.txt set filetype=todo
 
+" Code block syntax highlighting for markdown
+let g:markdown_fenced_languages = ['html', 'python', 'c', 'bash=sh']
 " Handy things to have for coding & etc. +++++++++++++++++++++
 " Enable folding
 set foldmethod=indent
@@ -212,10 +216,10 @@ else
 endif
 " fugitive
 if isdirectory(expand('~/.vim/bundle/vim-fugitive/'))
-    noremap gb :Gblame
-    noremap gl :Glog
-    noremap ge :Gedit
-    noremap gd :Gdiff
-    noremap gw :Gwrite
-    noremap gc :Gcommit
+    noremap gb :Gblame<cr>
+    noremap gl :Glog<cr>
+    noremap ge :Gedit<cr>
+    noremap gd :Gdiff<cr>
+    noremap gw :Gwrite<cr>
+    noremap gc :Gcommit<cr>
 endif

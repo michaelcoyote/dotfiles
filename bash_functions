@@ -34,10 +34,8 @@ function swapname()
 # Process/system related functions:
 #-------------------------------------------------------------
 
-
 function myps() { ps "$@" -u "$USER" -o pid,%cpu,%mem,bsdtime,command ; }
 function pp() { myps f | awk '!/awk/ && $0~var' var=$"{1:-".*"}" ; }
-
 
 function killps()   # kill by process name
 {

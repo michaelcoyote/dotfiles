@@ -37,6 +37,10 @@ Host stc
     Hostname supporttunnel.colo.rubrik.com
     User michael.guldan
 
+Host stc3
+    Hostname supporttunnel03.colo.rubrik.com
+    User michael.guldan
+
 Host build-colo
     Hostname michael-colo-dev.rubrik-lab.com
     User michael

@@ -189,7 +189,7 @@ au BufNewFile,BufRead $HOME/Dropbox/todo/todo.txt set filetype=todo
 au BufRead,BufNewFile todo.txt set filetype=todo
 
 " Code block syntax highlighting for markdown
-let g:markdown_fenced_languages = ['html', 'python', 'c', 'bash=sh']
+let g:markdown_fenced_languages = ['html', 'python', 'c', 'bash=sh', 'sh', 'js=javascript', 'JSON=javascript', 'json=javascript']
 " Handy things to have for coding & etc. +++++++++++++++++++++
 " Enable folding
 set foldmethod=indent

@@ -11,15 +11,15 @@ export PATH="$HOME/bin/arc/arcanist/bin:$PATH"
 
 
 listtunnels() {
-  ssh st -t /opt/rubrik/src/scripts/infra/tunnel/tunnel.py list
+  ssh stc -t /opt/rubrik/src/scripts/infra/tunnel/tunnel.py list
 }
 
 tunnel() {
-  ssh st -t /opt/rubrik/src/scripts/infra/tunnel/tunnel.py connect $1 $2
+  ssh stc -t /opt/rubrik/src/scripts/infra/tunnel/tunnel.py connect $1 $2
 }
 
 portforward() {
-  ssh -L$3:localhost:$3 st -t /opt/rubrik/src/scripts/infra/tunnel/tunnel.py forward $1 $2 --local_port $3 --node_port $4
+  ssh -L$3:localhost:$3 stc -t /opt/rubrik/src/scripts/infra/tunnel/tunnel.py forward $1 $2 --local_port $3 --node_port $4
 }
 
 alias lt=listtunnels
@@ -27,9 +27,24 @@ alias st=tunnel
 alias pf=portforward
 
 function udw() {
-  for h in st stc st2 build-colo;
+  for h in st stc st2 stc3 build-colo;
     do echo 'updating host dotfiles for: '"$h";
     ssh "$h" cd .dotfiles\; git pull;
   done
 }
 # for h in st stc st2 build-colo; do ssh $h cd .dotfiles\; git pull ; done
+#
+
+function sbd() {
+export dump_vol='/Volumes/seagate_2tb'
+if [ -d "$dump_vol" ]
+then
+    rsync -rltDv ~/Music/ "$dump_vol"/Music/
+    rsync -rltDv ~/working/ "$dump_vol"/mac/working
+    rsync -rltDv ~/tmp/ "$dump_vol"/mac/tmp/
+    rsync -rltDv ~/Downloads/ "$dump_vol"/mac/Downloads
+    rsync -rltDv /Users/michael/Documents/ "$dump_vol"/mac/Documents/
+else
+    echo "Volume unmounted/not ready:" "$dump_vol"
+fi
+}

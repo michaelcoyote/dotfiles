@@ -189,7 +189,10 @@ au BufNewFile,BufRead $HOME/Dropbox/todo/todo.txt set filetype=todo
 au BufRead,BufNewFile todo.txt set filetype=todo
 
 " Code block syntax highlighting for markdown
-let g:markdown_fenced_languages = ['html', 'python', 'c', 'bash=sh', 'sh', 'js=javascript', 'JSON=javascript', 'json=javascript']
+let g:markdown_fenced_languages = ['html', 'python', 'c',
+            \ 'bash=sh', 'sh', 'js=javascript',
+            \ 'JSON=javascript', 'json=javascript',
+            \ 'sql', 'xml']
 " Handy things to have for coding & etc. +++++++++++++++++++++
 " Enable folding
 set foldmethod=indent
@@ -197,15 +200,15 @@ set foldlevel=99
 nnoremap <Leader>f za
 " highlight bad whitespace
 highlight BadWhitespace ctermbg=red guibg=darkred
-au BufRead,BufNewFile *.{py,pyw,c,h,sh} match BadWhitespace /\s\+$/
+au BufRead,BufNewFile *.{go,py,pyw,c,h,sh,js} match BadWhitespace /\s\+$/
 " ctags for the usual projects
 nnoremap <Leader>T :!ctags -R -o $HOME/.tags/rkpythonscripts $HOME/sdmain;
             \ ctags -R -o $HOME/.tags/rkpython $HOME/sdmain/src/py <CR>
 set tags+=$HOME/.tags/rkpythonscripts
 set tags+=$HOME/.tags/rkpython
 " insert a datestamp
-nnoremap <leader>ts :put = strftime('%FT%T%z')<cr>
-nnoremap <leader>ds :put = strftime('%F')<cr>
+nnoremap <leader>ts "=strftime('%FT%T%z ')<cr>P
+nnoremap <leader>ds "=strftime('%F ')<cr>P
 
 
 " Run pathogen if it exists in the correct place.

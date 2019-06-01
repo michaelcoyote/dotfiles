@@ -192,7 +192,7 @@ au BufRead,BufNewFile todo.txt set filetype=todo
 let g:markdown_fenced_languages = ['html', 'python', 'c',
             \ 'bash=sh', 'sh', 'js=javascript',
             \ 'JSON=javascript', 'json=javascript',
-            \ 'sql', 'xml']
+            \ 'sql', 'css', 'xml']
 " Handy things to have for coding & etc. +++++++++++++++++++++
 " Enable folding
 set foldmethod=indent

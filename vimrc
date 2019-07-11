@@ -9,6 +9,14 @@
 " turn off the splash screen
 set shortmess+=I
 
+set encoding=utf-8
+scriptencoding utf-8
+
+" Vim completion +++++++++++++++++++++++++++++++++++++++++++++++
+" Set up some useful defaults for vim insert completion
+" Set spelling dictionary but only when file in "spell" mode
+set complete+=k
+
 " Vim keymapping +++++++++++++++++++++++++++++++++++++++++++++++
 " Set up the leader and localleader here in case I want it below
 " With a leader it's possible to do extra key combinations
@@ -93,6 +101,8 @@ set history=700
 set mouse=a
 " this is a fast terminal
 set ttyfast
+" set term color to 256 (but may fail)
+set t_Co=256
 " +++ Set up GUI options +++
 if has('gui_running')
 	" set up a decent default size 
@@ -101,7 +111,6 @@ if has('gui_running')
     set guioptions-=T
     " add tab pages
     set guioptions+=e
-    set t_Co=256
     set guitablabel=%M\ %t
     " enable mouse searching
     set mousemodel=extend
@@ -130,7 +139,9 @@ endif
 if v:version >= 700
     " Vim Spellchecker
     " Enable spell check for text files
-    autocmd BufNewFile,BufRead *.{txt,md} setlocal spell spelllang=en
+    augroup spell
+        autocmd BufNewFile,BufRead *.{txt,md} setlocal spell spelllang=en
+    augroup END
     " Pressing ,zz will toggle and untoggle spell checking
     noremap <leader>zz :setlocal spell!<cr>
     " Shortcuts using <leader>
@@ -169,25 +180,26 @@ set nobackup
 set autoread
 " Set up autocommands for various file types
 "
-" Make sure context highlighting works for *.md markdown files
-"  this overrides the typical behavior of highlighting Modula-2
-au BufRead,BufNewFile *.md set filetype=markdown shiftwidth=2 tabstop=2
-" Python and shell
-au BufRead,BufNewFile *.{py,pyw,sh,bash}
-            \ set tabstop=4 softtabstop=4 shiftwidth=4 |
-            \ set textwidth=79 expandtab autoindent |
-            \ set fileformat=unix number
-au BufRead,BufNewFile *.{js,html,cs}
-            \ set tabstop=2 softtabstop=2 shiftwidth=2 |
-            \ set textwidth=79 autoindent number
-au BufNewFile,BufRead *.go
-            \ set tabstop=4 shiftwidth=4 softtabstop=4 |
-            \ set textwidth=79 noexpandtab autoindent |
-            \ set number
-" workaround to get todo working 
-au BufNewFile,BufRead $HOME/Dropbox/todo/todo.txt set filetype=todo
-au BufRead,BufNewFile todo.txt set filetype=todo
-
+augroup tabsettings
+    " Make sure context highlighting works for *.md markdown files
+    "  this overrides the typical behavior of highlighting Modula-2
+    au BufRead,BufNewFile *.md set filetype=markdown shiftwidth=2 tabstop=2
+    " Python and shell
+    au BufRead,BufNewFile *.{py,pyw,sh,bash}
+                \ set tabstop=4 softtabstop=4 shiftwidth=4 |
+                \ set textwidth=79 expandtab autoindent |
+                \ set fileformat=unix number
+    au BufRead,BufNewFile *.{js,html,cs}
+                \ set tabstop=2 softtabstop=2 shiftwidth=2 |
+                \ set textwidth=79 autoindent number
+    au BufNewFile,BufRead *.go
+                \ set tabstop=4 shiftwidth=4 softtabstop=4 |
+                \ set textwidth=79 noexpandtab autoindent |
+                \ set number
+    " workaround to get todo working 
+    au BufNewFile,BufRead $HOME/Dropbox/todo/todo.txt set filetype=todo
+    au BufRead,BufNewFile todo.txt set filetype=todo
+augroup END
 " Code block syntax highlighting for markdown
 let g:markdown_fenced_languages = ['html', 'python', 'c',
             \ 'bash=sh', 'sh', 'js=javascript',
@@ -200,7 +212,16 @@ set foldlevel=99
 nnoremap <Leader>f za
 " highlight bad whitespace
 highlight BadWhitespace ctermbg=red guibg=darkred
-au BufRead,BufNewFile *.{go,py,pyw,c,h,sh,js} match BadWhitespace /\s\+$/
+augroup badwhitespace
+    au BufRead,BufNewFile *.{go,py,pyw,c,h,sh,js} match BadWhitespace /\s\+$/
+augroup END
+" setup nice ALE indicators
+" let g:ale_sign_error = '❌'
+" let g:ale_sign_warning = '⚠️'
+let g:ale_sign_error = '◉>'
+let g:ale_sign_warning = '◉-'
+highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#F5F5F5
+highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#F5F5F5
 " ctags for the usual projects
 nnoremap <Leader>T :!ctags -R -o $HOME/.tags/rkpythonscripts $HOME/sdmain;
             \ ctags -R -o $HOME/.tags/rkpython $HOME/sdmain/src/py <CR>

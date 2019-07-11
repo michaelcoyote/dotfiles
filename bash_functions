@@ -54,31 +54,6 @@ function killps()   # kill by process name
     done
 }
 
-function mydf()         # Pretty-print of 'df' output.
-{                       # Inspired by 'dfc' utility.
-    for fs ; do
-
-        if [ ! -d $"fs" ]
-        then
-          echo -e $"fs" " :No such file or directory" ; continue
-        fi
-
-        local info=( $(command df -P $"fs" | awk 'END{ print $2,$3,$5 }') )
-        local free=( $(command df -Pkh $"fs" | awk 'END{ print $4 }') )
-        local nbstars=$(( 20 * $info[1] / $info[0] ))
-        local out="["
-        for ((j=0;j<20;j++)); do
-            if [ ${j} -lt ${nbstars} ]; then
-               out=$out"*"
-            else
-               out=$out"-"
-            fi
-        done
-        out="${info[2]} $out] ($free free on $fs)"
-        echo -e "$out"
-    done
-}
-
 function iflist() {
   ifconfig -a | awk '/^[^[[:space:]]/ { split($0,iface,"  ");
          print iface[1]
@@ -103,7 +78,9 @@ function ifarray() {
 # TODO: 'array' support
 function parse_yaml {
    local prefix=$2
-   local s='[[:space:]]*' w='[a-zA-Z0-9_]*' fs=$(echo @|tr @ '\034')
+   local s='[[:space:]]*'
+   local w='[a-zA-Z0-9_]*'
+   local fs=$(echo @|tr @ '\034')
    sed -ne "s|^\($s\):|\1|" \
         -e "s|^\($s\)\($w\)$s:$s[\"']\(.*\)[\"']$s\$|\1$fs\2$fs\3|p" \
         -e "s|^\($s\)\($w\)$s:$s\(.*\)$s\$|\1$fs\2$fs\3|p"  "$1" |
@@ -120,12 +97,8 @@ function parse_yaml {
 
 
 # TODO clean this up to just print if:addr pairs.
-function ip() {
-    ifconfig -a | awk 'BEGIN {RS="";FS="\n"} 
-        {split($1,iface," "); 
-            gsub(/^[ /t]+inet/,"",$2); 
-            if ($2 ~ /addr/) print iface[1]":"$2
-        }'
+function ifip() {
+    /sbin/ifconfig -a | awk '/(cast)/ {print $2}' | cut -d: -f2
 } 
 
 function hii()   # Get current host related info.
@@ -137,8 +110,8 @@ function hii()   # Get current host related info.
     echo -e "\nCurrent date :$NC " ; date
     echo -e "\nMachine stats :$NC " ; uptime
     echo -e "\nMemory stats :$NC " ; free
-    echo -e "\nDiskspace :$NC " ; mydf / "$HOME"
-    echo -e "\nLocal IP Addresses :$NC" ; ip
+    echo -e "\nDiskspace :$NC " ; df -h / "$HOME"
+    echo -e "\nLocal IP Addresses :$NC" ; ifip
     echo -e "\nOpen connections :$NC "; netstat -pan --inet;
     echo
 }
@@ -166,9 +139,7 @@ function ask()          # See 'killps' for example of use.
 
 function corename()   # Get name of app that created a corefile.
 {
-    for file ; do
-        echo -n $"file" : ; gdb --core=$"file" --batch | head -1
-    done
+    echo -n "$1" : ; gdb --core=$"file" --batch | head -1
 }
 
 # convert mac to an IPv6 link local

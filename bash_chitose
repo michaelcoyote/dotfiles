@@ -6,3 +6,17 @@ if [ -f '/Users/michael/tmp/google-cloud-sdk/path.bash.inc' ]; then . '/Users/mi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/michael/tmp/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/michael/tmp/google-cloud-sdk/completion.bash.inc'; fi
+
+function sbd() {
+export dump_vol='/Volumes/seagate_2tb'
+if [ -d "$dump_vol" ]
+then
+    rsync -rltDv ~/Music/ "$dump_vol"/Music/
+    rsync -rltDv ~/working/ "$dump_vol"/mac/working
+    rsync -rltDv ~/tmp/ "$dump_vol"/mac/tmp/
+    rsync -rltDv ~/Downloads/ "$dump_vol"/mac/Downloads
+    rsync -rltDv /Users/michael/Documents/ "$dump_vol"/mac/Documents/
+else
+    echo "Volume unmounted/not ready:" "$dump_vol"
+fi
+}

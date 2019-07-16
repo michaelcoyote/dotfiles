@@ -7,11 +7,13 @@
 
 # do macos only things.
 if uname -a |grep --quiet Darwin ; then
+    # shellcheck source=/dev/null
     if [ -f "$(brew --prefix)"/etc/bash_completion ]; then
       . "$(brew --prefix)"/etc/bash_completion
     fi
 fi
 # source bashrc
-if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
+# shellcheck source=/dev/null
+if [ -f "$(HOME)"/.bashrc ]; then . "$(HOME)"/.bashrc; fi
 # pick up PATH here~
 export PATH=/usr/local/lib:/usr/local/bin:$PATH

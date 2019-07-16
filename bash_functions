@@ -68,33 +68,6 @@ function ifarray() {
     }'
 }
 
-# yaml parsing for shell, from Stack Overflow:
-# http://stackoverflow.com/questions/5014632/how-can-i-parse-a-yaml-file-from-a-linux-shell-script
-# will turn:
-# one:
-#     two: "three"
-# into--> one_two="three"
-# eval $(parse_yaml sample.yml) or eval $(parse_yaml sample.yml "prefix_")
-# TODO: 'array' support
-function parse_yaml {
-   local prefix=$2
-   local s='[[:space:]]*'
-   local w='[a-zA-Z0-9_]*'
-   local fs=$(echo @|tr @ '\034')
-   sed -ne "s|^\($s\):|\1|" \
-        -e "s|^\($s\)\($w\)$s:$s[\"']\(.*\)[\"']$s\$|\1$fs\2$fs\3|p" \
-        -e "s|^\($s\)\($w\)$s:$s\(.*\)$s\$|\1$fs\2$fs\3|p"  "$1" |
-   awk -F"$fs" '{
-      indent = length($1)/2;
-      vname[indent] = $2;
-      for (i in vname) {if (i > indent) {delete vname[i]}}
-      if (length($3) > 0) {
-         vn=""; for (i=0; i<indent; i++) {vn=(vn)(vname[i])("_")}
-         printf("%s%s%s=\"%s\"\n", "'$prefix'",vn, $2, $3);
-      }
-   }'
-}
-
 
 # TODO clean this up to just print if:addr pairs.
 function ifip() {

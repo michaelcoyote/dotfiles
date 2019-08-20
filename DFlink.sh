@@ -26,7 +26,7 @@ for file in $files; do
         if [ -L ~/."$file" ] #check for existing symlink
         then
             echo "Link exists for ~./$file"
-        elif [ "$(stat -c %h -- "$file")" -gt 1 ]
+        elif [ "$(stat -f %l -- "$file")" -gt 1 ]
         then
             echo "~/.$file has more than one name, check for hard links."
         else

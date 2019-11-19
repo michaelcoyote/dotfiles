@@ -125,13 +125,14 @@ if has('gui_running')
 	" Per OS/GUI options ++++++++++++++++++++++++++
 	" Set up fonts and other items on a GUI by GUI basis...
 	if has('gui_win32')
-		" I like the "peep" font - http://zevv.nl/play/code/zevv-peep/
-		set guifont=peep:h11,Consolas:h11
+		" I like the peep font - http://zevv.nl/play/code/zevv-peep/
+        " but it turns out Iosevka is more avalible
+		set guifont=Iosevka:h11,Consolas:h11
 	endif
 	if has('gui_macvim')
         echo "looks like we're using macvim"
 		" Monaco 10 pt looks good, if I don't have Hack 11p 
-		set guifont=Hack:h12,Monaco:h10
+		set guifont=Iosevka:h11,Hack:h12,Monaco:h10
 	endif
 endif
 
@@ -196,6 +197,7 @@ augroup tabsettings
                 \ set tabstop=4 shiftwidth=4 softtabstop=4 |
                 \ set textwidth=79 noexpandtab autoindent |
                 \ set number
+    au BufNewFile,BufRead *.tsx set filetype=typescript
     " workaround to get todo working 
     au BufNewFile,BufRead $HOME/Dropbox/todo/todo.txt set filetype=todo
     au BufRead,BufNewFile todo.txt set filetype=todo

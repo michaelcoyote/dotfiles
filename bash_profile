@@ -17,3 +17,5 @@ fi
 if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
 # pick up PATH here~
 export PATH=/usr/local/lib:/usr/local/bin:$PATH
+
+export PATH="$HOME/.cargo/bin:$PATH"

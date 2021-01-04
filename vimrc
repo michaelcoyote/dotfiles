@@ -131,7 +131,7 @@ if has('gui_running')
 	endif
 	if has('gui_macvim')
         echo "looks like we're using macvim"
-		" Monaco 10 pt looks good, if I don't have Hack 11p 
+		" Monaco 10 pt looks good, if I don't have Hack or Iosevka 
 		set guifont=Iosevka:h11,Hack:h12,Monaco:h10
 	endif
 endif
@@ -215,11 +215,9 @@ nnoremap <Leader>f za
 " highlight bad whitespace
 highlight BadWhitespace ctermbg=red guibg=darkred
 augroup badwhitespace
-    au BufRead,BufNewFile *.{go,py,pyw,c,h,sh,js} match BadWhitespace /\s\+$/
+    au BufRead,BufNewFile *.{go,py,pyw,c,h,sh,js,rs} match BadWhitespace /\s\+$/
 augroup END
 " setup nice ALE indicators
-" let g:ale_sign_error = '❌'
-" let g:ale_sign_warning = '⚠️'
 let g:ale_sign_error = '◉>'
 let g:ale_sign_warning = '◉-'
 highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#F5F5F5

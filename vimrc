@@ -128,11 +128,18 @@ if has('gui_running')
 		" I like the peep font - http://zevv.nl/play/code/zevv-peep/
         " but it turns out Iosevka is more avalible
 		set guifont=Iosevka:h11,Consolas:h11
-	endif
-	if has('gui_macvim')
+    elseif has('gui_macvim')
         echo "looks like we're using macvim"
 		" Monaco 10 pt looks good, if I don't have Hack or Iosevka 
 		set guifont=Iosevka:h11,Hack:h12,Monaco:h10
+    elseif has('gui_gtk2') || has('gui_gtk3')
+        " echo "using gtk"
+        set guifont=Iosevka\ 11,Monospace\ 11
+    elseif has('x11')
+        echo "base X11"
+        set guifont=*-courier-medium-r-normal-*-*-180-*-*-m-*-*
+    else
+        set guifont=Courier_New:h11:cDEFAULT
 	endif
 endif
 

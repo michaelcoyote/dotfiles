@@ -1,3 +1,6 @@
+# shellcheck disable=SC1090,SC1091
+# Stop all the warnings for sourcing because shellcheck can't handle it
+# 
 # Bash knows 3 diferent shells: normal shell, interactive shell, login shell.
 # ~/.bashrc is read for interactive shells and ~/.profile & ~/.bash_profile 
 # is read for login shells.  
@@ -75,6 +78,8 @@ export HISTCONTROL=ignorespace:ignoredups
 export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 export PROMPT_COMMAND="history -a"
 
+# if rust
+if [ -f "${HOME}"/.cargo/env ]; then source "${HOME}"/.cargo/env;fi
 # source in stuff from files if they exist.
 test -e ~/.alias && . ~/.alias
 test -e ~/.bash_functions && . ~/.bash_functions
@@ -84,14 +89,13 @@ test -e ~/.bash_"${HOSTNAME}" && . ~/.bash_"${HOSTNAME}"
 test -e ~/.bash_supporttunnel && . ~/.bash_supporttunnel
 test -e ~/.bash_local && . ~/.bash_local
 
-RED="\[\033[0;31m\]"
-YELLOW="\[\033[0;33m\]"
-GREEN="\[\033[0;32m\]"
-NO_COLOR="\[\033[0m\]"
+export RED="\[\033[0;31m\]"
+export YELLOW="\[\033[0;33m\]"
+export GREEN="\[\033[0;32m\]"
+export NO_COLOR="\[\033[0m\]"
 
 PS1="$GREEN\u@\h$NO_COLOR:\w$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
 
 
 export PS1 PS2
 umask 022
-

@@ -78,6 +78,10 @@ export HISTCONTROL=ignorespace:ignoredups
 export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 export PROMPT_COMMAND="history -a"
 
+# if nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # if rust
 if [ -f "${HOME}"/.cargo/env ]; then source "${HOME}"/.cargo/env;fi
 # source in stuff from files if they exist.
@@ -99,3 +103,5 @@ PS1="$GREEN\u@\h$NO_COLOR:\w$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
 
 export PS1 PS2
 umask 022
+
+

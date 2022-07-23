@@ -11,3 +11,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 complete -C /home/michael/bin/terraform terraform
+
+export FLYCTL_INSTALL="/home/michael/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+

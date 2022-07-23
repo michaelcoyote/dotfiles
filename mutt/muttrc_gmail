@@ -1,0 +1,37 @@
+source "~/.mutt/256color"
+
+	
+# Handle web mail
+auto_view text/html                                      # view html automatically
+alternative_order text/plain text/enriched text/html     # save html for last
+
+
+set realname = "michael thomas guldan"
+set from = "michaelguldan@gmail.com"
+set use_from = yes
+set envelope_from = yes
+
+# Ensure TLS is enforced
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
+# Protocol: smtp for TLS (587), smtps for SSL (465)
+set smtp_url = "smtp://michaelguldan@smtp.gmail.com:587/"
+set imap_user = "michaelguldan"
+set imap_keepalive = 900
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set record = "+[Gmail]/Sent Mail"
+set postponed = "+[Gmail]/Drafts"
+set header_cache = "~/.mutt_cache/headers"
+set message_cachedir = "~/.mutt_cache/bodies"
+set certificate_file = "~/.mutt/certificates"
+set move = no
+
+# Needed to get and display mail (imap-fetch-mail)
+set editor = "vim"
+set charset = "utf-8"
+set record = ""
+
+# set the imap_pass and smtp_pass here
+source ~/.mutt_secrets

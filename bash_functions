@@ -5,6 +5,8 @@
 
 # SSL cert lookup functions
 
+# dump out the site cert information given a domain name
+# Usage: sitecert example.com
 sitecert() {
         local p=443
         if [ -n "$2" ]; then
@@ -12,6 +14,9 @@ sitecert() {
         fi
         leafcert $1 $p | openssl x509 -text -noout
 }
+
+# dump out the end-entity cert by itself.
+# Usage: leafcert example.com
 
 leafcert() {
         local p=443
@@ -26,6 +31,9 @@ leafcert() {
         </dev/null openssl s_client ${chain} -connect $1:$p 2>/dev/null | \
                 awk '/-----BEGIN/,/-----END/ { print }'
 }
+
+# dump out the full chain of certs including signing certs for the leaf cert.
+# Usage: fullchain example.org
 
 fullchain() {
         local p=443

@@ -15,7 +15,7 @@ ctags tmux.conf bash_${HOSTNAME} bash_supporttunnel"
 ##########
 
 # do all the work from the dotfiles dir
-cd $dfdir
+cd $dfdir || exit
 mkdir -p $olddir
 
 # move any existing dotfiles in homedir to backup dir, then create symlinks
@@ -29,7 +29,7 @@ for file in $files; do
         # elif [ "$(stat -f %l -- "$file")" -gt 1 ]
         elif [ "$(stat -c %h -- "$file")" -gt 1 ]
         then
-            echo "~/.$file has more than one name, check for hard links."
+            echo "$HOME/.$file has more than one name, check for hard links."
         else
             if [ -e ~/."$file" ] # if .file exists, back up
             then

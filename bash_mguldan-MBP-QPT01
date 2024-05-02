@@ -11,8 +11,8 @@ export SF_TOKEN="y0fuTGeERTA7ljZz2HWr8oFko"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 ## export DOCKER_HOST=192.168.64.2
-## export DOCKER_HOST=192.168.105.2
 export DOCKER_HOST=unix:///Users/mguldan/.local/share/containers/podman/machine/qemu/podman.sock
+## export DOCKER_HOST=192.168.105.2
 
 # aerolab bash completion
 source /Users/mguldan/.aerolab.completion.bash

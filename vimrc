@@ -28,7 +28,7 @@ let g:maplocalleader = '-'
 
 " +++ Useful mapped commands +++
 " toggle line numbers
-nnoremap <leader>N :set invnumber<cr>
+nnoremap <leader>n :set invnumber<cr>
 " toggle syntax (when it bogs down vim)
 function! SynToggle()
     if exists('g:syntax_on')
@@ -48,6 +48,9 @@ function! EightyColumnBar()
 endfunction
 " toggle red bar at 80 col
 nnoremap <leader>! :call EightyColumnBar()<cr>
+" toggle set list
+nmap <leader>l :set list!<cr>
+
 " toggle paste mode
 nnoremap <leader>p :set paste!<cr>
 " quick edit vimrc
@@ -105,8 +108,8 @@ set ttyfast
 set t_Co=256
 " +++ Set up GUI options +++
 if has('gui_running')
-	" set up a decent default size 
-	set lines=65 columns=164
+    " set up a decent default size
+    set lines=65 columns=164
     " remove tearoffs
     set guioptions-=T
     " add tab pages
@@ -122,16 +125,16 @@ if has('gui_running')
     nnoremap <leader>ww :set lines=75 columns=320<cr>
     " support larged fenced codeblocks in markdown
     let g:markdown_minlines = 400
-	" Per OS/GUI options ++++++++++++++++++++++++++
-	" Set up fonts and other items on a GUI by GUI basis...
-	if has('gui_win32')
-		" I like the peep font - http://zevv.nl/play/code/zevv-peep/
+    " Per OS/GUI options ++++++++++++++++++++++++++
+    " Set up fonts and other items on a GUI by GUI basis...
+    if has('gui_win32')
+        " I like the peep font - http://zevv.nl/play/code/zevv-peep/
         " but it turns out Iosevka is more avalible
-		set guifont=Iosevka:h11,Consolas:h11
+        set guifont=Iosevka:h11,Consolas:h11
     elseif has('gui_macvim')
         echo "looks like we're using macvim"
-		" Monaco 10 pt looks good, if I don't have Hack or Iosevka 
-		set guifont=Iosevka:h11,Hack:h12,Monaco:h10
+        " Monaco 10 pt looks good, if I don't have Hack or Iosevka 
+        set guifont=Iosevka:h11,Hack:h12,Monaco:h10
     elseif has('gui_gtk2') || has('gui_gtk3')
         " echo "using gtk"
         set guifont=Iosevka\ 11,Monospace\ 11
@@ -140,7 +143,7 @@ if has('gui_running')
         set guifont=*-courier-medium-r-normal-*-*-180-*-*-m-*-*
     else
         set guifont=Courier_New:h11:cDEFAULT
-	endif
+    endif
 endif
 
 " +++ Turn on version 7 or above features +++
@@ -170,8 +173,8 @@ filetype indent on
 " Vim search ++++++++++++++++++++++++++++++++++++++++++++++++++
 " do useful search things
 if has('extra_search')
-	" Highlight results and match while typing search string. 
-	set incsearch hlsearch
+    " Highlight results and match while typing search string. 
+    set incsearch hlsearch
 endif
 " Use case insensitive search, except when using capital letters
 set ignorecase smartcase
@@ -197,7 +200,7 @@ augroup tabsettings
                 \ set tabstop=4 softtabstop=4 shiftwidth=4 |
                 \ set textwidth=79 expandtab autoindent |
                 \ set fileformat=unix number
-    au BufRead,BufNewFile *.{js,html,cs}
+    au BufRead,BufNewFile *.{js,html,css,yaml}
                 \ set tabstop=2 softtabstop=2 shiftwidth=2 |
                 \ set textwidth=79 autoindent number
     au BufNewFile,BufRead *.go

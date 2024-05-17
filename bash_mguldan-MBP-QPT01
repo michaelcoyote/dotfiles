@@ -2,12 +2,6 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-# SFCD ISH
-#
-export SF_USERNAME="mguldan@aerospike.com"
-export SF_PASSWORD="Unbound_Triangle@Scarcity0Falcon"
-export SF_TOKEN="y0fuTGeERTA7ljZz2HWr8oFko"
-
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 ## export DOCKER_HOST=192.168.64.2

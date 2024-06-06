@@ -5,8 +5,13 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 ## export DOCKER_HOST=192.168.64.2
-export DOCKER_HOST=unix:///Users/mguldan/.local/share/containers/podman/machine/qemu/podman.sock
 ## export DOCKER_HOST=192.168.105.2
+## export DOCKER_HOST=unix:///Users/mguldan/.local/share/containers/podman/machine/qemu/podman.sock
+export DOCKER_HOST=unix:///var/folders/v3/n6_b0h415dx7dz00141_9t1c0000gp/T/podman/podman-machine-default-api.sock
 
 # aerolab bash completion
 source /Users/mguldan/.aerolab.completion.bash
+
+# Useful work aliases and functions
+alias ci='asadm -cf '
+alias cis='asadm -e"summary -l" -cf'

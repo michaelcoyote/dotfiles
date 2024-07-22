@@ -14,6 +14,14 @@
 #        ;;
 #    esac
 #fi
+#
+
+# If it's a mac let's run some things like setting up homebrew
+if [[ $OSTYPE == darwin* ]]; 
+    then if [[ -f /opt/homebrew/bin/brew  ]];
+        then eval "$(/opt/homebrew/bin/brew shellenv)";
+    fi
+fi
 
 # Setup a local tmp if none exists
 [[ -d "${HOME}"/tmp ]] || mkdir "${HOME}"/tmp

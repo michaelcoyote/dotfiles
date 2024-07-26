@@ -6,12 +6,12 @@
 # no matter how we log in.
 
 # do macos only things.
-if uname -a |grep --quiet Darwin ; then
-    # shellcheck source=/dev/null
-    if [ -f "$(brew --prefix)"/etc/bash_completion ]; then
-      . "$(brew --prefix)"/etc/bash_completion
-    fi
-fi
+#if uname -a |grep --quiet Darwin ; then
+#    # shellcheck source=/dev/null
+#    if [ -f "$(brew --prefix)"/etc/bash_completion ]; then
+#      . "$(brew --prefix)"/etc/bash_completion
+#    fi
+#fi
 # source bashrc
 # shellcheck source=/dev/null
 if [ -f ~/.bashrc ]; then . ~/.bashrc; fi

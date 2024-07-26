@@ -18,9 +18,13 @@
 
 # If it's a mac let's run some things like setting up homebrew
 if [[ $OSTYPE == darwin* ]]; 
-    then if [[ -f /opt/homebrew/bin/brew  ]];
-        then eval "$(/opt/homebrew/bin/brew shellenv)";
-    fi
+    then
+        brewpath="/opt/homebrew/bin/brew";
+        if [[ -f "$brewpath"  ]];
+            then
+                eval "$("$brewpath" shellenv)";
+                source "$("$brewpath" --prefix)"/etc/bash_completion
+        fi
 fi
 
 # Setup a local tmp if none exists

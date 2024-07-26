@@ -17,7 +17,7 @@
 #
 
 # If it's a mac let's run some things like setting up homebrew
-if [[ $OSTYPE == darwin* ]]; 
+if [[ $OSTYPE == darwin* ]];
     then
         brewpath="/opt/homebrew/bin/brew";
         if [[ -f "$brewpath"  ]];
@@ -102,7 +102,6 @@ test -e ~/.bash_functions && . ~/.bash_functions
 test -e ~/.bashs && . ~/.bashs
 # bring in any locals last so they override
 test -e ~/.bash_"${HOSTNAME}" && . ~/.bash_"${HOSTNAME}"
-test -e ~/.bash_supporttunnel && . ~/.bash_supporttunnel
 test -e ~/.bash_local && . ~/.bash_local
 
 export RED="\[\033[0;31m\]"

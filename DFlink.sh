@@ -11,7 +11,7 @@ olddir=~/.dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
 files="bashrc vimrc gitconfig wgetrc screenrc XCompose ssh/config bash_profile
 bash_functions config/htop/htoprc alias psqlrc
-ctags tmux.conf bash_${HOSTNAME} bash_supporttunnel"
+ctags tmux.conf bash_${HOSTNAME}"
 ##########
 
 # function to support macos & linux w/o editing

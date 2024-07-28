@@ -118,7 +118,7 @@ function hii()   # Get current host related info.
 {
     echo -e "\nYou are logged on $HOST"
     echo -e "\nAdditionnal information:$NC " ; uname -a
-    echo -e "\nUsers logged on:$NC " ; w -h |
+    echo -e "\nUsers logged on:$NC " ; LC_CTYPE=C && LANG=C; w -h |
              cut -d " " -f1 | sort | uniq
     echo -e "\nCurrent date :$NC " ; date
     echo -e "\nMachine stats :$NC " ; uptime

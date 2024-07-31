@@ -20,7 +20,7 @@ function linkcount()
 {
     if [[ $OSTYPE == darwin* ]];
         then
-            stat -f %l -- "$1";
+            stat -q -f %l -- "$1";
         else
             stat -c %h -- "$1";
     fi
@@ -38,13 +38,13 @@ for file in $files; do
         then
             # make sure parent dirs exist e.g. config/foo
             dir=$(dirname "$file")
-            mkdir -p "$dir"
+            mkdir -p "$HOME"/."$dir"
         fi
         # Link back to the dotfile
         if [ -L ~/."$file" ] #check for existing symlink
         then
             echo "Link exists for ~./$file"
-        elif [ "$(linkcount "$HOME"/."$file")" -gt 1 ]
+        elif [[ "$(linkcount "$HOME"/."$file")" -gt 1 ]]
         then
             echo "$HOME/.$file has more than one name, check for hard links."
         else

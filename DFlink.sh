@@ -9,8 +9,9 @@
 dfdir=~/.dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="bashrc vimrc gitconfig wgetrc screenrc XCompose ssh/config bash_profile
-bash_functions config/htop/htoprc alias psqlrc
+files="bashrc bash_profile bash_functions vimrc
+gitconfig wgetrc screenrc XCompose ssh/config
+config/htop/htoprc alias psqlrc
 ctags tmux.conf bash_${HOSTNAME}"
 ##########
 
@@ -33,6 +34,12 @@ mkdir -p $olddir
 for file in $files; do
     if [ -e "$dfdir"/"$file" ] # make sure source file exists
     then
+        if [[ $file == */* ]];
+        then
+            # make sure parent dirs exist e.g. config/foo
+            dir=$(dirname "$file")
+            mkdir -p "$dir"
+        fi
         # Link back to the dotfile
         if [ -L ~/."$file" ] #check for existing symlink
         then

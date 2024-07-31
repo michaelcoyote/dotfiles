@@ -233,8 +233,8 @@ let g:ale_sign_warning = '◉-'
 highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#F5F5F5
 highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#F5F5F5
 " ctags for the usual projects
-nnoremap <Leader>T :!ctags -R -o $HOME/.tags/rkpythonscripts $HOME/sdmain;
-            \ ctags -R -o $HOME/.tags/rkpython $HOME/sdmain/src/py <CR>
+nnoremap <Leader>T :!ctags -R -o $HOME/.tags/rkpythonscripts $HOME/work;
+            \ ctags -R -o $HOME/.tags/rkpython $HOME/work <CR>
 set tags+=$HOME/.tags/rkpythonscripts
 set tags+=$HOME/.tags/rkpython
 " insert a datestamp

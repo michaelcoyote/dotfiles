@@ -99,8 +99,8 @@ if [ -f "${HOME}"/.cargo/env ]; then source "${HOME}"/.cargo/env;fi
 # source in stuff from files if they exist.
 test -e ~/.alias && . ~/.alias
 test -e ~/.bash_functions && . ~/.bash_functions
-test -e ~/.bashs && . ~/.bashs
 # bring in any locals last so they override
+test -e ~/.bashs && . ~/.bashs
 test -e ~/.bash_"${HOSTNAME}" && . ~/.bash_"${HOSTNAME}"
 test -e ~/.bash_local && . ~/.bash_local
 

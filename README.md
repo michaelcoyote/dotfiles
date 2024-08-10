@@ -13,3 +13,7 @@ To add files to the install script, for now edit the `files` variable in the scr
 For example, a file like `.bashrc` should be listed as `bashrc` and named `bashrc` in the `dotfiles` repo.  For a file like the `.ssh/config`, create the `ssh` directory in the repo then place the `config` file within the `ssh` directory. Then list the relative path `ssh\config` in the `files` variable.
 
 Of course it's still possible to manually link an individual file `ln -s .dotfiles/blah ~/.blah`
+
+Put any local and or sensitive variables you do not wish to be checked into get in the `~/.bash_local` in the local `$HOME`.  If you do have a local variables you want to check in, you can create a `bash_"$HOSTNAME"` file and that will also be sourced in.
+
+

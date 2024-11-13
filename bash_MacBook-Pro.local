@@ -1,0 +1,4 @@
+export DOCKER_HOST=util
+export DVMPATH="${HOME}/work/docker_vm/" 
+
+alias start-util="${DVMPATH}/vftool/build/vftool -k ${DVMPATH}/kernel -i ${DVMPATH}/initrd -d ${DVMPATH}/focal-server-cloudimg-arm64.img -p2 -m 4096 -a \"root=/dev/vda console=hvc0\" -t 0"

@@ -7,16 +7,21 @@
 	pager = less -r
 
 [alias]
-  co = checkout
-  ci = commit
-  st = status
-  br = branch
-  bl = branch -l
-  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-  ol = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
-  type = cat-file -t
-  dump = cat-file -p
-	root = rev-parse --show-toplevel
+    a  = add
+    b  = branch
+    bl = branch -l
+    c  = commit
+    cm = commit --message
+    co = checkout
+    d  = diff
+    dump = cat-file -p
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    lo = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
+    lg = log --graph --oneline
+    root = rev-parse --show-toplevel
+    s  = status
+    st = status
+    type = cat-file -t
 
 [push]
 	default = matching

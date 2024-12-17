@@ -1,0 +1,5 @@
+
+export RUSTUP_HOME="${HOME}/.rustup"
+export CARGO_HOME="${HOME}/.cargo"
+
+export PATH=${PATH}:${HOME}/.cargo/bin

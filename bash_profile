@@ -17,3 +17,9 @@
 if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
 # pick up PATH here~
 export PATH=/usr/local/lib:/usr/local/bin:$PATH
+# add local bin, necessary for pipx
+if [ -d ${HOME}/.local/bin ]; then export PATH=${HOME}/.local/bin:$PATH; fi
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init.bash 2>/dev/null || :

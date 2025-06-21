@@ -69,6 +69,13 @@ function swapname()
     mv $TMPFILE "$2"
 }
 
+function dspace() 
+{ # replace spaces in a filename with underscores
+    despaced=$(echo "$1" | sed 's/ /_/g')
+    if ask "\nRename $1 to $despaced?"; 
+        then mv "$1" "$despaced"; 
+    fi
+}
 
 #-------------------------------------------------------------
 # Process/system related functions:

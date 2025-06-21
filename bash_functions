@@ -132,7 +132,7 @@ function hii()   # Get current host related info.
     echo -e "\nMemory stats :$NC " ; free
     echo -e "\nDiskspace :$NC " ; df -h / "$HOME"
     echo -e "\nLocal IP Addresses :$NC" ; ifip
-    echo -e "\nOpen connections :$NC "; netstat -pan --inet;
+    # echo -e "\nOpen connections :$NC "; netstat -pan --inet;
     echo
 }
 

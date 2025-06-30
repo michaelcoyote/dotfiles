@@ -77,6 +77,11 @@ function dspace()
     fi
 }
 
+function dlhere()
+{
+    find "$HOME"/Downloads -cmin -60 -type f -exec mv {} ./ \;;
+}
+
 #-------------------------------------------------------------
 # Process/system related functions:
 #-------------------------------------------------------------

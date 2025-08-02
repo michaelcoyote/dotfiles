@@ -4,8 +4,9 @@
 # local aliases should end up in bash_local
 
 # alias changing to commonly used directories
-alias work='cd ~/working/'
-alias cdsn='cd ~/Documents/work/site_notes/'
-
+alias work='cd ~/work/'
+alias cdn='cd ~/notes/'
+# its 2025, every term has color now
+alias ls='ls --color=auto'
 # Default dirs output more useful
 alias dirs="dirs -v"

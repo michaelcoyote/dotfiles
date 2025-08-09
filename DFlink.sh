@@ -12,7 +12,7 @@ olddir=~/.dotfiles_old             # old dotfiles backup directory
 files="bashrc bash_profile bash_functions vimrc
 gitconfig wgetrc screenrc XCompose ssh/config
 config/htop/htoprc alias psqlrc
-config/ghostty/config inputrc
+config/ghostty/config inputrc pythonrc.py
 ctags tmux.conf bash_${HOSTNAME}"
 ##########
 

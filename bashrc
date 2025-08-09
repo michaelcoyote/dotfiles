@@ -96,6 +96,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # if rust
 if [ -f "${HOME}"/.cargo/env ]; then source "${HOME}"/.cargo/env;fi
+# load pythonrc.py
+if [ -f "${HOME}"/.pythonrc.py ]; then export PYTHONSTARTUP="${HOME}"/.pythonrc.py ;fi
 # source in stuff from files if they exist.
 test -e ~/.alias && . ~/.alias
 test -e ~/.bash_functions && . ~/.bash_functions
